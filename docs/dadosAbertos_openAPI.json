@@ -1,0 +1,6763 @@
+{
+  "openapi": "3.0.3",
+  "info" : {
+    "description" : "<h1>Serviços de Dados Abertos<\/h1><p>API dos serviços de Dados Abertos do Senado Federal<\/p>",
+    "license" : {
+      "url" : "https://www.apache.org/licenses/LICENSE-2.0",
+      "name" : "Apache License, Version 2.0"
+    },
+    "version" : "3.2.20",
+    "title" : "Serviços de Dados Abertos do Senado Federal"
+  },
+  "servers" : [
+    {
+      "url" : "/"
+    }
+  ],
+  "tags" : [
+    {
+      "name" : "AgendaReuniaoService"
+      ,
+      "description" : "Este serviço provê informações sobre agenda de reuniões das Comissões, com pauta, finalidade etc."
+    }
+    ,
+    {
+      "name" : "AutorService"
+      ,
+      "description" : "Métodos para retorno de informações sobre autores de matérias do Congresso Nacional."
+    }
+    ,
+    {
+      "name" : "BlocoParlamentarService"
+      ,
+      "description" : "Exibe informações sobre as coligações de blocos no Senado Federal."
+    }
+    ,
+    {
+      "name" : "ComposicaoService"
+      ,
+      "description" : "Este serviço provê métodos para composição de comissões do Senado."
+    }
+    ,
+    {
+      "name" : "DistribuicaoMateriaService"
+      ,
+      "description" : "Este serviço contém diversos métodos para exibição de autoria/relatoria de matérias no âmbito das Comissões e/ou\nPlenário do Senado Federal."
+    }
+    ,
+    {
+      "name" : "GlossarioService"
+      ,
+      "description" : "Serviços de glossário."
+    }
+    ,
+    {
+      "name" : "LegislacaoService"
+      ,
+      "description" : "Provê serviços para recuperação de Normas Jurídicas Federais."
+    }
+    ,
+    {
+      "name" : "ListaComissaoService"
+      ,
+      "description" : "Diversos métodos para recuperação de informações de Comissões em atividade no Senado Federal."
+    }
+    ,
+    {
+      "name" : "ListaMateriaComissaoService"
+      ,
+      "description" : "Este serviço provê uma série de métodos para recuperação de matérias em tramitação com base em vários argumentos."
+    }
+    ,
+    {
+      "name" : "ListaMateriaPrazoService"
+      ,
+      "description" : "Este serviço provê sobre matérias que tramitam com prazo determinado."
+    }
+    ,
+    {
+      "name" : "ListaSenadorService"
+      ,
+      "description" : "Este serviço provê diversos métodos para recuperação de informações de Parlamentares e suas bancadas no Senado\nFederal, bem como sua atuação parlamentar."
+    }
+    ,
+    {
+      "name" : "MateriaService"
+      ,
+      "description" : "Este serviço provê acesso aos detalhamentos de matérias do Processo Legislativo."
+    }
+    ,
+    {
+      "name" : "OrcamentoService"
+      ,
+      "description" : "Provê informações acerca do Orçamento da União."
+    }
+    ,
+    {
+      "name" : "PesquisaMateriaService"
+      ,
+      "description" : "Serviço para pesquisa de matérias legislativas com base em diversos argumentos."
+    }
+    ,
+    {
+      "name" : "PlenarioService"
+      ,
+      "description" : "Este serviço provê métodos para recuperação de informações de Sessões Plenárias, como agenda, pauta e resultados."
+    }
+    ,
+    {
+      "name" : "ReuniaoComissaoService"
+      ,
+      "description" : "Métodos para recuperação do detalhamento de informações de Reuniões de Comissões."
+    }
+    ,
+    {
+      "name" : "TaquigrafiaService"
+      ,
+      "description" : "Provê serviços para recuperação de Notas Taquigráficas e arquivos Multimedia de Sessões Plenárias e\nReuniões de Comissão."
+    }
+    ,
+    {
+      "name" : "VotacaoComissaoService"
+      ,
+      "description" : "Este serviço provê métodos para recuperação de informações de votações em comissões."
+    }
+  ],
+  "components" : {
+    "schemas" : {
+      "UnidadeDescricaoDto" : {
+"type" : "object",
+"title" : "UnidadeDescricaoDto",
+"properties" : {
+  "codigo" : {
+    "readOnly" : false,
+"description" : "",
+"type" : "integer",
+"format" : "int64"
+  },
+  "horaExibicao" : {
+    "readOnly" : false,
+"description" : "",
+"type" : "string"
+  },
+  "dataUnidade" : {
+    "readOnly" : false,
+"description" : "",
+"type" : "string"
+  },
+  "descricao" : {
+    "readOnly" : false,
+"description" : "",
+"type" : "string"
+  },
+  "nomeOrador" : {
+    "readOnly" : false,
+"description" : "",
+"type" : "string"
+  },
+  "descricaoOrador" : {
+    "readOnly" : false,
+"description" : "",
+"type" : "string"
+  },
+  "duracaoVideo" : {
+    "readOnly" : false,
+"description" : "",
+"type" : "string"
+  },
+  "duracaoAudio" : {
+    "readOnly" : false,
+"description" : "",
+"type" : "string"
+  },
+  "enderecoThumbnail" : {
+    "readOnly" : false,
+"description" : "",
+"type" : "string"
+  },
+  "enderecoVideo" : {
+    "readOnly" : false,
+"description" : "",
+"type" : "string"
+  },
+  "enderecoAudio" : {
+    "readOnly" : false,
+"description" : "",
+"type" : "string"
+  }
+},
+"example" : {
+  "codigo" : 12345,
+  "horaExibicao" : "...",
+  "dataUnidade" : "...",
+  "descricao" : "...",
+  "nomeOrador" : "...",
+  "descricaoOrador" : "...",
+  "duracaoVideo" : "...",
+  "duracaoAudio" : "...",
+  "enderecoThumbnail" : "...",
+  "enderecoVideo" : "...",
+  "enderecoAudio" : "..."
+},
+"description" : ""
+      }
+      ,
+      "xml_ns0_unidadeDescricaoDto" : {
+"type" : "object",
+"xml" : {
+  "name" : "unidade"
+},
+"title" : "unidadeDescricaoDto",
+"allOf" : [
+  {
+"properties" : {
+  "codigo" : {
+    "xml" : {
+    },
+    "readOnly" : false,
+"description" : "",
+"type" : "integer",
+"format" : "int64"
+  },
+  "dataUnidade" : {
+    "xml" : {
+    },
+    "readOnly" : false,
+"description" : "",
+"type" : "string"
+  },
+  "descricao" : {
+    "xml" : {
+    },
+    "readOnly" : false,
+"description" : "",
+"type" : "string"
+  },
+  "descricaoOrador" : {
+    "xml" : {
+    },
+    "readOnly" : false,
+"description" : "",
+"type" : "string"
+  },
+  "duracaoAudio" : {
+    "xml" : {
+    },
+    "readOnly" : false,
+"description" : "",
+"type" : "string"
+  },
+  "duracaoVideo" : {
+    "xml" : {
+    },
+    "readOnly" : false,
+"description" : "",
+"type" : "string"
+  },
+  "enderecoAudio" : {
+    "xml" : {
+    },
+    "readOnly" : false,
+"description" : "",
+"type" : "string"
+  },
+  "enderecoThumbnail" : {
+    "xml" : {
+    },
+    "readOnly" : false,
+"description" : "",
+"type" : "string"
+  },
+  "enderecoVideo" : {
+    "xml" : {
+    },
+    "readOnly" : false,
+"description" : "",
+"type" : "string"
+  },
+  "horaExibicao" : {
+    "xml" : {
+    },
+    "readOnly" : false,
+"description" : "",
+"type" : "string"
+  },
+  "nomeOrador" : {
+    "xml" : {
+    },
+    "readOnly" : false,
+"description" : "",
+"type" : "string"
+  }
+}
+  }
+],
+"description" : ""
+      }
+    }
+  },
+  "paths": {
+    "\/dadosabertos/agendareuniao/atual/iCal" : {
+      "get" : {
+        "tags" : [ "AgendaReuniaoService" ],
+        "description" : "Obtém a agenda dos próximos 30 dias a partir da data atual",
+        "operationId" : "agendaMesReunioesFormatoIcalendar",
+        "responses" : {
+          "200" : {
+            "content" : {
+              "text/calendar" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }
+            },
+            "description" : "Retorna a agenda de reuniões de Comissão para os próximos 30 dias"
+          }
+        },
+        "parameters" : [
+          {
+            "name" : "v",
+            "in" : "query",
+            "schema" : {
+              "type" : "integer",
+              "format" : "int32"
+            },
+            "description" : ""
+          }
+        ]
+      }
+    },
+    "\/dadosabertos/agendareuniao/mes/{mes}" : {
+      "get" : {
+        "tags" : [ "AgendaReuniaoService" ],
+        "description" : "Obtém a agenda de reunião das comissões no mês informado",
+        "operationId" : "agendaReuniaoMesXml",
+        "responses" : {
+          "200" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }, 
+              "application/xml" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }, 
+              "text/csv" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }
+            },
+            "description" : "Retorna a agenda de reunião das comissões na data informada."
+          }
+        },
+        "parameters" : [
+          {
+            "name" : "mes",
+            "in" : "path",
+            "required" : true,
+            "schema" : {
+              "type" : "string"
+            },
+            "description" : "mês de referência da agenda no formato AAAAMM"
+          },
+          {
+            "name" : "v",
+            "in" : "query",
+            "schema" : {
+              "type" : "integer",
+              "format" : "int32"
+            },
+            "description" : ""
+          }
+        ]
+      }
+    },
+    "\/dadosabertos/agendareuniao/{dataInicio}/{dataFim}" : {
+      "get" : {
+        "tags" : [ "AgendaReuniaoService" ],
+        "description" : "D E S C O N T I N U A D O !!!\n\nFavor utilizar o serviço de agenda por mês.\n\nObtém a agenda de reunião das comissões em um período máximo de um mês",
+        "operationId" : "agendaReuniaoXml",
+        "responses" : {
+          "200" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }, 
+              "application/xml" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }, 
+              "text/csv" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }
+            },
+            "description" : "Retorna a agenda de reunião das comissões no período."
+          }
+        },
+        "parameters" : [
+          {
+            "name" : "dataFim",
+            "in" : "path",
+            "required" : true,
+            "schema" : {
+              "type" : "string"
+            },
+            "description" : "data de fim da agenda no formato AAAAMMDD"
+          },
+          {
+            "name" : "dataInicio",
+            "in" : "path",
+            "required" : true,
+            "schema" : {
+              "type" : "string"
+            },
+            "description" : "data de início da agenda no formato AAAAMMDD"
+          },
+          {
+            "name" : "v",
+            "in" : "query",
+            "schema" : {
+              "type" : "integer",
+              "format" : "int32"
+            },
+            "description" : ""
+          }
+        ]
+      }
+    },
+    "\/dadosabertos/agendareuniao/{dataReferencia}" : {
+      "get" : {
+        "tags" : [ "AgendaReuniaoService" ],
+        "description" : "Obtém a agenda de reunião das comissões na data informada",
+        "operationId" : "agendaReuniaoXml2",
+        "responses" : {
+          "200" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }, 
+              "application/xml" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }, 
+              "text/csv" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }
+            },
+            "description" : "Retorna a agenda de reunião das comissões na data informada."
+          }
+        },
+        "parameters" : [
+          {
+            "name" : "dataReferencia",
+            "in" : "path",
+            "required" : true,
+            "schema" : {
+              "type" : "string"
+            },
+            "description" : "data de referência da agenda no formato AAAAMMDD"
+          },
+          {
+            "name" : "v",
+            "in" : "query",
+            "schema" : {
+              "type" : "integer",
+              "format" : "int32"
+            },
+            "description" : ""
+          }
+        ]
+      }
+    },
+    "\/dadosabertos/autor/lista/atual" : {
+      "get" : {
+        "tags" : [ "AutorService" ],
+        "description" : "Obtém a lista de Senadores autores de proposições",
+        "operationId" : "materiaAutoresXml",
+        "responses" : {
+          "200" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }, 
+              "application/xml" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }, 
+              "text/csv" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }
+            },
+            "description" : "lista de Senadores autores de proposições"
+          }
+        },
+        "parameters" : [
+          {
+            "name" : "v",
+            "in" : "query",
+            "schema" : {
+              "type" : "integer",
+              "format" : "int32"
+            },
+            "description" : "(opcional) - Versão do serviço"
+          }
+        ]
+      }
+    },
+    "\/dadosabertos/autor/tiposAutor" : {
+      "get" : {
+        "tags" : [ "AutorService" ],
+        "description" : "Lista os Tipos de Autor",
+        "operationId" : "listaTiposAutorXml",
+        "responses" : {
+          "200" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }, 
+              "application/xml" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }, 
+              "text/csv" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }
+            },
+            "description" : "Retorna a lista de Tipos de Autor"
+          }
+        },
+        "parameters" : [
+          {
+            "name" : "v",
+            "in" : "query",
+            "schema" : {
+              "type" : "integer",
+              "format" : "int32"
+            },
+            "description" : "(opcional) - Versão do serviço"
+          }
+        ]
+      }
+    },
+    "\/dadosabertos/blocoParlamentar/lista" : {
+      "get" : {
+        "tags" : [ "BlocoParlamentarService" ],
+        "description" : "Obtém a lista e a composição dos Blocos Parlamentares no Congresso Nacional",
+        "operationId" : "listaBlocoParlamentarXml",
+        "responses" : {
+          "200" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }, 
+              "application/xml" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }, 
+              "text/csv" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }
+            },
+            "description" : "Lista dos Blocos Parlamentares no Congresso Nacional e suas respectivas composições"
+          }
+        },
+        "parameters" : [
+        ]
+      }
+    },
+    "\/dadosabertos/blocoParlamentar/{codigo}" : {
+      "get" : {
+        "tags" : [ "BlocoParlamentarService" ],
+        "description" : "Obtém a composição de um bloco parlamentar",
+        "operationId" : "blocoParlamentarXml",
+        "responses" : {
+          "200" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }, 
+              "application/xml" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }, 
+              "text/csv" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }
+            },
+            "description" : "composição do bloco parlamentar"
+          }
+        },
+        "parameters" : [
+          {
+            "name" : "codigo",
+            "in" : "path",
+            "required" : true,
+            "schema" : {
+              "type" : "integer",
+              "format" : "int32"
+            },
+            "description" : "código do bloco parlamentar"
+          }
+        ]
+      }
+    },
+    "\/dadosabertos/comissao/cpi/{comissao}/requerimentos" : {
+      "get" : {
+        "tags" : [ "ListaComissaoService" ],
+        "description" : "Lista Requerimentos de CPI. Exclusivo para CPIs.",
+        "operationId" : "listaRequerimentosCPIXml",
+        "responses" : {
+          "200" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }
+            },
+            "description" : "Retorna a lista de Requerimentos da CPI, com os documentos enviados e/ou recebidos. RETORNO SOMENTE EM\nJSON."
+          }
+        },
+        "parameters" : [
+          {
+            "name" : "comissao",
+            "in" : "path",
+            "required" : true,
+            "schema" : {
+              "type" : "string"
+            },
+            "description" : "- Sigla da comissão"
+          },
+          {
+            "name" : "pagina",
+            "in" : "query",
+            "required" : true,
+            "schema" : {
+              "type" : "integer",
+              "format" : "int32"
+            },
+            "description" : "(obrigatório) - Número da página da lista de Requerimentos. Se não informado assume 0."
+          },
+          {
+            "name" : "tamanho",
+            "in" : "query",
+            "required" : true,
+            "schema" : {
+              "type" : "integer",
+              "format" : "int32"
+            },
+            "description" : "(opcional) - Tamanho da página. É o número de registros retornados por página. Valor padrão 20.\nValor permitido de 5 a 30."
+          }
+        ]
+      }
+    },
+    "\/dadosabertos/comissao/lista/colegiados" : {
+      "get" : {
+        "tags" : [ "ListaComissaoService" ],
+        "description" : "Obtém a lista geral de colegiados EM ATIVIDADE no Congresso Nacional",
+        "operationId" : "listaColegiadosXml",
+        "responses" : {
+          "200" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }, 
+              "application/xml" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }, 
+              "text/csv" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }
+            },
+            "description" : "Lista de colegiados (Comissões, Órgãos, Mesa, etc.)"
+          }
+        },
+        "parameters" : [
+        ]
+      }
+    },
+    "\/dadosabertos/comissao/lista/tiposColegiado" : {
+      "get" : {
+        "tags" : [ "ListaComissaoService" ],
+        "description" : "Obtém a lista de tipos de colegiado",
+        "operationId" : "listaTiposColegiadoXml",
+        "responses" : {
+          "200" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }, 
+              "application/xml" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }, 
+              "text/csv" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }
+            },
+            "description" : "Lista de tipos de colegiado (Comissões, Órgãos, Mesa, etc.)"
+          }
+        },
+        "parameters" : [
+        ]
+      }
+    },
+    "\/dadosabertos/comissao/lista/{tipo}" : {
+      "get" : {
+        "tags" : [ "ListaComissaoService" ],
+        "description" : "Obtém a lista de comissões do Senado Federal por tipo",
+        "operationId" : "listaComissoesXml",
+        "responses" : {
+          "200" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }, 
+              "application/xml" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }, 
+              "text/csv" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }
+            },
+            "description" : "lista de comissões do Senado Federal do tipo especificado"
+          }
+        },
+        "parameters" : [
+          {
+            "name" : "tipo",
+            "in" : "path",
+            "required" : true,
+            "schema" : {
+              "type" : "string"
+            },
+            "description" : "- Tipo da comissão: permanente, cpi ou temporaria"
+          },
+          {
+            "name" : "v",
+            "in" : "query",
+            "schema" : {
+              "type" : "integer",
+              "format" : "int32"
+            },
+            "description" : "(opcional) - Versão do serviço"
+          }
+        ]
+      }
+    },
+    "\/dadosabertos/comissao/tiposCargo" : {
+      "get" : {
+        "tags" : [ "ListaComissaoService" ],
+        "description" : "Obtém a lista de tipos de cargo",
+        "operationId" : "listaTiposCargoXml",
+        "responses" : {
+          "200" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }, 
+              "application/xml" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }, 
+              "text/csv" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }
+            },
+            "description" : "Lista de tipos de cargo"
+          }
+        },
+        "parameters" : [
+        ]
+      }
+    },
+    "\/dadosabertos/comissao/{comissao}/documentos" : {
+      "get" : {
+        "tags" : [ "ListaComissaoService" ],
+        "description" : "Obtém os documentos de uma comissão. Se não informar o período, serão retornados os documentos apresentados nos\núltimos 30 dias;",
+        "operationId" : "listaDocumentosComissaoXml",
+        "responses" : {
+          "200" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }, 
+              "application/xml" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }, 
+              "text/csv" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }
+            },
+            "description" : "Retorna os dados dos documentos da comissão, apresentados no período máximo de um ano"
+          }
+        },
+        "parameters" : [
+          {
+            "name" : "comissao",
+            "in" : "path",
+            "required" : true,
+            "schema" : {
+              "type" : "string"
+            },
+            "description" : "- Sigla da comissão"
+          },
+          {
+            "name" : "dataFim",
+            "in" : "query",
+            "schema" : {
+              "type" : "string"
+            },
+            "description" : "(opcional) - Data de fim do período da pesquisa no formato AAAAMMDD. Se não for informada, dataFim =\ndata atual"
+          },
+          {
+            "name" : "dataInicio",
+            "in" : "query",
+            "schema" : {
+              "type" : "string"
+            },
+            "description" : "(opcional) - Data de início do período da pesquisa no formato AAAAMMDD. Se não for informada,\ndataInicio = data atual - 1 mês"
+          },
+          {
+            "name" : "tipo",
+            "in" : "query",
+            "schema" : {
+              "type" : "string"
+            },
+            "description" : "(opcional) - Sigla do tipo de identificação do documento"
+          },
+          {
+            "name" : "v",
+            "in" : "query",
+            "schema" : {
+              "type" : "integer",
+              "format" : "int32"
+            },
+            "description" : ""
+          }
+        ]
+      }
+    },
+    "\/dadosabertos/composicao/comissao/{codigo}" : {
+      "get" : {
+        "tags" : [ "ComposicaoService" ],
+        "description" : "Obtém a última composição de uma comissão do Senado",
+        "operationId" : "ultimaComposicaoComissaoSfXml",
+        "responses" : {
+          "200" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }, 
+              "application/xml" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }, 
+              "text/csv" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }
+            },
+            "description" : ""
+          }
+        },
+        "parameters" : [
+          {
+            "name" : "codigo",
+            "in" : "path",
+            "required" : true,
+            "schema" : {
+              "type" : "integer",
+              "format" : "int32"
+            },
+            "description" : "código da comissão"
+          },
+          {
+            "name" : "ativas",
+            "in" : "query",
+            "schema" : {
+              "type" : "string"
+            },
+            "description" : "(opcional) para vagas ativas apenas (S). Para todas, não informe este parâmetro."
+          },
+          {
+            "name" : "v",
+            "in" : "query",
+            "schema" : {
+              "type" : "integer",
+              "format" : "int32"
+            },
+            "description" : "(opcional) versão do serviço"
+          }
+        ]
+      }
+    },
+    "\/dadosabertos/glossario/lista" : {
+      "get" : {
+        "tags" : [ "GlossarioService" ],
+        "description" : "Lista termos do glossário\n\nOBSERVAÇÃO: o glossário está em construção. Até o momento, ele contém apenas os termos da versão 4 dos serviços de\nmatéria (matéria, movimentações, emendas, relatorias e votações).",
+        "operationId" : "listaGlossarioXml",
+        "responses" : {
+          "200" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }, 
+              "application/xml" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }, 
+              "text/csv" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }
+            },
+            "description" : "Retorna a lista de termos do glossário"
+          }
+        },
+        "parameters" : [
+          {
+            "name" : "agrupador",
+            "in" : "query",
+            "schema" : {
+              "type" : "string"
+            },
+            "description" : "(opcional) filtra apenas as tags agrupadoras (S) ou as de conteúdo simples (N)"
+          },
+          {
+            "name" : "termo",
+            "in" : "query",
+            "schema" : {
+              "type" : "string"
+            },
+            "description" : "(opcional) termo que se quer pesquisar no glossário"
+          },
+          {
+            "name" : "v",
+            "in" : "query",
+            "schema" : {
+              "default" : "4",
+              "type" : "integer",
+              "format" : "int32"
+            },
+            "description" : "(opcional) versão do serviço"
+          }
+        ]
+      }
+    },
+    "\/dadosabertos/legislacao/lista" : {
+      "get" : {
+        "tags" : [ "LegislacaoService" ],
+        "description" : "Obtém a lista de normas da base do Senado Federal\n\nATENÇÃO: é necessário informar uma das seguintes combinações de parâmetros: \"numero\" ou \"tipo\" e \"numero\" ou \"tipo\"\ne \"ano\" ou \"numero\" e \"ano\"\n\nO parâmetro \"versao\" é opcional",
+        "operationId" : "listaNormasXml",
+        "responses" : {
+          "200" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }, 
+              "application/xml" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }, 
+              "text/csv" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }
+            },
+            "description" : "lista de normas da base do Senado Federal"
+          }
+        },
+        "parameters" : [
+          {
+            "name" : "ano",
+            "in" : "query",
+            "schema" : {
+              "type" : "integer",
+              "format" : "int32"
+            },
+            "description" : "(opcional) - Ano da norma"
+          },
+          {
+            "name" : "complemento",
+            "in" : "query",
+            "schema" : {
+              "type" : "string"
+            },
+            "description" : "(opcional) - letra de complemento (somente para versão 3 ou posterior)"
+          },
+          {
+            "name" : "data",
+            "in" : "query",
+            "schema" : {
+              "type" : "string"
+            },
+            "description" : "(opcional) formato (YYYYMMDD) - Data da assinatura da norma (somente para versão 3 ou posterior)"
+          },
+          {
+            "name" : "ident",
+            "in" : "query",
+            "schema" : {
+              "type" : "string"
+            },
+            "description" : "(opcional) - letra de identificação (somente para versão 3 ou posterior)"
+          },
+          {
+            "name" : "numero",
+            "in" : "query",
+            "schema" : {
+              "type" : "integer",
+              "format" : "int32"
+            },
+            "description" : "(opcional) - Número da norma"
+          },
+          {
+            "name" : "reedicao",
+            "in" : "query",
+            "schema" : {
+              "type" : "integer",
+              "format" : "int32"
+            },
+            "description" : "(opcional) - número sequencial e reedição (somente para versão 3 ou posterior)"
+          },
+          {
+            "name" : "seq",
+            "in" : "query",
+            "schema" : {
+              "type" : "integer",
+              "format" : "int32"
+            },
+            "description" : "(opcional) - número sequencial da assinatura da norma na data (somente para versão 3 ou posterior)"
+          },
+          {
+            "name" : "tipo",
+            "in" : "query",
+            "schema" : {
+              "type" : "string"
+            },
+            "description" : "(opcional) - Sigla do tipo da norma"
+          },
+          {
+            "name" : "v",
+            "in" : "query",
+            "schema" : {
+              "type" : "integer",
+              "format" : "int32"
+            },
+            "description" : "(opcional) - Versão do serviço"
+          }
+        ]
+      }
+    },
+    "\/dadosabertos/legislacao/termos" : {
+      "get" : {
+        "tags" : [ "LegislacaoService" ],
+        "description" : "Obtém a lista de termos do catálogo",
+        "operationId" : "listaTermosXml",
+        "responses" : {
+          "200" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }, 
+              "application/xml" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }, 
+              "text/csv" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }
+            },
+            "description" : "lista de termos"
+          }
+        },
+        "parameters" : [
+          {
+            "name" : "termo",
+            "in" : "query",
+            "schema" : {
+              "type" : "string"
+            },
+            "description" : ""
+          },
+          {
+            "name" : "tipo",
+            "in" : "query",
+            "schema" : {
+              "type" : "string"
+            },
+            "description" : "(opcional) - código referente ao tipo de termo"
+          },
+          {
+            "name" : "v",
+            "in" : "query",
+            "schema" : {
+              "type" : "integer",
+              "format" : "int32"
+            },
+            "description" : "(opcional) - Versão do serviço"
+          }
+        ]
+      }
+    },
+    "\/dadosabertos/legislacao/tiposNorma" : {
+      "get" : {
+        "tags" : [ "LegislacaoService" ],
+        "description" : "Obtém a lista de Tipos de Norma",
+        "operationId" : "listaTiposNormaXml",
+        "responses" : {
+          "200" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }, 
+              "application/xml" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }, 
+              "text/csv" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }
+            },
+            "description" : "Lista de Tipos de Norma (comissões, órgão, mesa, etc.)"
+          }
+        },
+        "parameters" : [
+        ]
+      }
+    },
+    "\/dadosabertos/legislacao/tiposPublicacao" : {
+      "get" : {
+        "tags" : [ "LegislacaoService" ],
+        "description" : "Obtém a lista de Tipos de Publicação",
+        "operationId" : "listaTiposPublicacaoXml",
+        "responses" : {
+          "200" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }, 
+              "application/xml" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }, 
+              "text/csv" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }
+            },
+            "description" : "Lista de Tipos de Publicação"
+          }
+        },
+        "parameters" : [
+        ]
+      }
+    },
+    "\/dadosabertos/legislacao/tiposVide" : {
+      "get" : {
+        "tags" : [ "LegislacaoService" ],
+        "description" : "Obtém a lista de tipos de declaração",
+        "operationId" : "listaTiposVideXml",
+        "responses" : {
+          "200" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }, 
+              "application/xml" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }, 
+              "text/csv" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }
+            },
+            "description" : "Lista de tipos de declaração"
+          }
+        },
+        "parameters" : [
+        ]
+      }
+    },
+    "\/dadosabertos/legislacao/tiposdeclaracao/detalhe" : {
+      "get" : {
+        "tags" : [ "LegislacaoService" ],
+        "description" : "Obtém a lista de detalhes de declaração",
+        "operationId" : "listaTiposDeclaracaoDetalheXml",
+        "responses" : {
+          "200" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }, 
+              "application/xml" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }, 
+              "text/csv" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }
+            },
+            "description" : "Lista os detalhes dos tipos de declaração"
+          }
+        },
+        "parameters" : [
+        ]
+      }
+    },
+    "\/dadosabertos/legislacao/urn" : {
+      "get" : {
+        "tags" : [ "LegislacaoService" ],
+        "description" : "Obtém detalhes de uma norma através da URN",
+        "operationId" : "normaUrn",
+        "responses" : {
+          "200" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }, 
+              "application/xml" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }, 
+              "text/csv" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }
+            },
+            "description" : "Retorna os detalhes da norma informada"
+          }
+        },
+        "parameters" : [
+          {
+            "name" : "urn",
+            "in" : "query",
+            "schema" : {
+              "type" : "string"
+            },
+            "description" : "Identificador Universal da Norma, presente no normas.leg.br"
+          },
+          {
+            "name" : "v",
+            "in" : "query",
+            "schema" : {
+              "type" : "integer",
+              "format" : "int32"
+            },
+            "description" : "(opcional) - Versão do serviço"
+          }
+        ]
+      }
+    },
+    "\/dadosabertos/legislacao/{codigo}" : {
+      "get" : {
+        "tags" : [ "LegislacaoService" ],
+        "description" : "Obtém detalhes de uma norma através do código",
+        "operationId" : "normaXml",
+        "responses" : {
+          "200" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }, 
+              "application/xml" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }, 
+              "text/csv" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }
+            },
+            "description" : "Retorna os detalhes da norma informada"
+          }
+        },
+        "parameters" : [
+          {
+            "name" : "codigo",
+            "in" : "path",
+            "required" : true,
+            "schema" : {
+              "type" : "integer",
+              "format" : "int32"
+            },
+            "description" : "- Código do documento"
+          },
+          {
+            "name" : "v",
+            "in" : "query",
+            "schema" : {
+              "type" : "integer",
+              "format" : "int32"
+            },
+            "description" : "(opcional) - Versão do serviço"
+          }
+        ]
+      }
+    },
+    "\/dadosabertos/legislacao/{tipo}/{numdata}/{anoseq}" : {
+      "get" : {
+        "tags" : [ "LegislacaoService" ],
+        "description" : "Obtém detalhes do documento através do tipo/número/ano ou através da data de assinatura/sequencial",
+        "operationId" : "normaXml2",
+        "responses" : {
+          "200" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }, 
+              "application/xml" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }, 
+              "text/csv" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }
+            },
+            "description" : "Retorna os detalhes do documento informado"
+          }
+        },
+        "parameters" : [
+          {
+            "name" : "anoseq",
+            "in" : "path",
+            "required" : true,
+            "schema" : {
+              "type" : "integer",
+              "format" : "int32"
+            },
+            "description" : "- ano da data de assinatura do documento ou sequencial"
+          },
+          {
+            "name" : "numdata",
+            "in" : "path",
+            "required" : true,
+            "schema" : {
+              "type" : "integer",
+              "format" : "int32"
+            },
+            "description" : "- número do documento ou data da assinatura"
+          },
+          {
+            "name" : "tipo",
+            "in" : "path",
+            "required" : true,
+            "schema" : {
+              "type" : "string"
+            },
+            "description" : "- Sigla do tipo do documento"
+          },
+          {
+            "name" : "v",
+            "in" : "query",
+            "schema" : {
+              "type" : "integer",
+              "format" : "int32"
+            },
+            "description" : "(opcional) - Versão do serviço"
+          }
+        ]
+      }
+    },
+    "\/dadosabertos/materia/assuntos" : {
+      "get" : {
+        "tags" : [ "MateriaService" ],
+        "operationId" : "listaAssuntosXml",
+        "responses" : {
+          "200" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }, 
+              "application/xml" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }, 
+              "text/csv" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }
+            },
+            "description" : "Retorna a lista de Assuntos"
+          }
+        },
+        "parameters" : [
+        ]
+      }
+    },
+    "\/dadosabertos/materia/atualizacoes/{codigo}" : {
+      "get" : {
+        "tags" : [ "MateriaService" ],
+        "description" : "Obtém as atualizações mais recentes em uma matéria",
+        "operationId" : "atualizacoesMateriaXml",
+        "responses" : {
+          "200" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }, 
+              "application/xml" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }, 
+              "text/csv" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }
+            },
+            "description" : "Retorna as atualizações recentes na matéria informada"
+          }
+        },
+        "parameters" : [
+          {
+            "name" : "codigo",
+            "in" : "path",
+            "required" : true,
+            "schema" : {
+              "type" : "integer",
+              "format" : "int32"
+            },
+            "description" : "- Código da matéria no banco de dados"
+          },
+          {
+            "name" : "numdias",
+            "in" : "query",
+            "schema" : {
+              "type" : "integer",
+              "format" : "int32"
+            },
+            "description" : "- Número de dias a considerar (X): atualizações ocorridas nos últimos X dias - X por default é 30.\nEstão disponíbeis as atualizações dos últimos 30 dias."
+          },
+          {
+            "name" : "v",
+            "in" : "query",
+            "schema" : {
+              "type" : "integer",
+              "format" : "int32"
+            },
+            "description" : "(opcional) - Versão do serviço"
+          }
+        ]
+      }
+    },
+    "\/dadosabertos/materia/atualizadas" : {
+      "get" : {
+        "tags" : [ "MateriaService" ],
+        "description" : "Lista as matérias que foram incluídas ou sofreram atualização nos últimos dias (o default é 5)",
+        "operationId" : "listaMateriasAtualizadas",
+        "responses" : {
+          "200" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }, 
+              "application/xml" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }, 
+              "text/csv" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }
+            },
+            "description" : "Retorna a lista de matérias atualizadas"
+          }
+        },
+        "parameters" : [
+          {
+            "name" : "alteracao",
+            "in" : "query",
+            "schema" : {
+              "type" : "string"
+            },
+            "description" : "- Descrição do tipo de atualização (somente a partir da versão 4) - para ver a lista de tipos de\natualização, acesse o serviço\nhttp://legis.senado.leg.br/dadosabertos/docs/resource_MateriaService.html#resource_MateriaService_tiposAtualizacoesXml_GET"
+          },
+          {
+            "name" : "ano",
+            "in" : "query",
+            "schema" : {
+              "type" : "string"
+            },
+            "description" : "(opcional) - Ano da matéria"
+          },
+          {
+            "name" : "codAssuntoEspecifico",
+            "in" : "query",
+            "schema" : {
+              "type" : "string"
+            },
+            "description" : "(opcional) - Código do assunto específico"
+          },
+          {
+            "name" : "codAssuntoGeral",
+            "in" : "query",
+            "schema" : {
+              "type" : "string"
+            },
+            "description" : "(opcional) - Código do assunto geral"
+          },
+          {
+            "name" : "codigo",
+            "in" : "query",
+            "schema" : {
+              "type" : "string"
+            },
+            "description" : "(opcional) - Código da matéria"
+          },
+          {
+            "name" : "numdias",
+            "in" : "query",
+            "schema" : {
+              "default" : "5",
+              "type" : "integer",
+              "format" : "int32"
+            },
+            "description" : "- Número de dias a considerar (X): matérias alteradas nos últimos X dias - X por default é 5. Há\ndados de até 30 dias na versão 4 e até 1 dia na versão 2."
+          },
+          {
+            "name" : "numero",
+            "in" : "query",
+            "schema" : {
+              "type" : "string"
+            },
+            "description" : "(opcional) - Número da matéria"
+          },
+          {
+            "name" : "sigla",
+            "in" : "query",
+            "schema" : {
+              "type" : "string"
+            },
+            "description" : "(opcional) - Sigla do subtipo da matéria"
+          },
+          {
+            "name" : "termo",
+            "in" : "query",
+            "schema" : {
+              "type" : "string"
+            },
+            "description" : ""
+          },
+          {
+            "name" : "v",
+            "in" : "query",
+            "schema" : {
+              "type" : "integer",
+              "format" : "int32"
+            },
+            "description" : "(opcional) - Versão do serviço"
+          }
+        ]
+      }
+    },
+    "\/dadosabertos/materia/autoria/{codigo}" : {
+      "get" : {
+        "tags" : [ "MateriaService" ],
+        "description" : "Obtém a autoria de uma matéria",
+        "operationId" : "autoriaMateriaXml",
+        "responses" : {
+          "200" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }, 
+              "application/xml" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }, 
+              "text/csv" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }
+            },
+            "description" : "Retorna a autoria da matéria informada"
+          }
+        },
+        "parameters" : [
+          {
+            "name" : "codigo",
+            "in" : "path",
+            "required" : true,
+            "schema" : {
+              "type" : "integer",
+              "format" : "int32"
+            },
+            "description" : "- Código (ID) da matéria. Identificador único da matéria."
+          },
+          {
+            "name" : "v",
+            "in" : "query",
+            "schema" : {
+              "type" : "integer",
+              "format" : "int32"
+            },
+            "description" : "(opcional) - Versão do serviço"
+          }
+        ]
+      }
+    },
+    "\/dadosabertos/materia/classes" : {
+      "get" : {
+        "tags" : [ "MateriaService" ],
+        "description" : "Lista as classificações de matérias",
+        "operationId" : "listaClassificacoesXml",
+        "responses" : {
+          "200" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }, 
+              "application/xml" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }, 
+              "text/csv" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }
+            },
+            "description" : "Retorna a lista de classificações de matéria"
+          }
+        },
+        "parameters" : [
+        ]
+      }
+    },
+    "\/dadosabertos/materia/decisoes" : {
+      "get" : {
+        "tags" : [ "MateriaService" ],
+        "description" : "Lista os Tipos de Decisão",
+        "operationId" : "listaDecisoesXml",
+        "responses" : {
+          "200" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }, 
+              "application/xml" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }, 
+              "text/csv" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }
+            },
+            "description" : "Retorna a lista de Tipos de Decisão"
+          }
+        },
+        "parameters" : [
+        ]
+      }
+    },
+    "\/dadosabertos/materia/destinos" : {
+      "get" : {
+        "tags" : [ "MateriaService" ],
+        "description" : "Lista os Destinos possíveis",
+        "operationId" : "listaDestinosXml",
+        "responses" : {
+          "200" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }, 
+              "application/xml" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }, 
+              "text/csv" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }
+            },
+            "description" : "Retorna a lista de Destinos"
+          }
+        },
+        "parameters" : [
+        ]
+      }
+    },
+    "\/dadosabertos/materia/distribuicao/autoria" : {
+      "get" : {
+        "tags" : [ "DistribuicaoMateriaService" ],
+        "description" : "Obtém a distribuição de autoria de matérias de um senador. Necessário informar o código do parlamentar.",
+        "operationId" : "distribuicaoMateriaAutoriaXml",
+        "responses" : {
+          "200" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }, 
+              "application/xml" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }, 
+              "text/xml" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }
+            },
+            "description" : "Retorna os totais de matérias por autor nas comissões"
+          }
+        },
+        "parameters" : [
+          {
+            "name" : "codParlamentar",
+            "in" : "query",
+            "schema" : {
+              "type" : "string"
+            },
+            "description" : "(opcional) - Código do parlamentar"
+          },
+          {
+            "name" : "siglaComissao",
+            "in" : "query",
+            "schema" : {
+              "type" : "string"
+            },
+            "description" : "(opcional) - Sigla da comissão"
+          },
+          {
+            "name" : "v",
+            "in" : "query",
+            "schema" : {
+              "type" : "integer",
+              "format" : "int32"
+            },
+            "description" : "(opcional) - Versão do serviço"
+          }
+        ]
+      }
+    },
+    "\/dadosabertos/materia/distribuicao/autoria/{siglaComissao}" : {
+      "get" : {
+        "tags" : [ "DistribuicaoMateriaService" ],
+        "description" : "Obtém a distribuição de autoria de matérias em uma comissão",
+        "operationId" : "distribuicaoMateriaAutoriaComissaoXml",
+        "responses" : {
+          "200" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }, 
+              "application/xml" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }, 
+              "text/xml" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }
+            },
+            "description" : "Retorna a distribuição de autoria de matérias na comissão\n\nEssa versão com a sigla da comissão na assinatura foi mantida por compatibilidade com versões anteriores do\nserviço"
+          }
+        },
+        "parameters" : [
+          {
+            "name" : "siglaComissao",
+            "in" : "path",
+            "required" : true,
+            "schema" : {
+              "type" : "string"
+            },
+            "description" : "- Sigla da comissão (em maiúsculo)"
+          },
+          {
+            "name" : "codParlamentar",
+            "in" : "query",
+            "schema" : {
+              "type" : "string"
+            },
+            "description" : "(opcional) - Código do parlamentar"
+          },
+          {
+            "name" : "v",
+            "in" : "query",
+            "schema" : {
+              "type" : "integer",
+              "format" : "int32"
+            },
+            "description" : "(opcional) - Versão do serviço"
+          }
+        ]
+      }
+    },
+    "\/dadosabertos/materia/distribuicao/relatoria/{sigla}" : {
+      "get" : {
+        "tags" : [ "DistribuicaoMateriaService" ],
+        "description" : "Obtém a distribuição de relatoria de matérias em uma comissão",
+        "operationId" : "distribuicaoMateriaRelatoriaXml",
+        "responses" : {
+          "200" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }, 
+              "application/xml" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }, 
+              "text/xml" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }
+            },
+            "description" : "Retorna a distribuição de relatoria de matérias na comissão"
+          }
+        },
+        "parameters" : [
+          {
+            "name" : "sigla",
+            "in" : "path",
+            "required" : true,
+            "schema" : {
+              "type" : "string"
+            },
+            "description" : "- Sigla da comissão (em maiúsculo)"
+          },
+          {
+            "name" : "v",
+            "in" : "query",
+            "schema" : {
+              "type" : "integer",
+              "format" : "int32"
+            },
+            "description" : "(opcional) - Versão do serviço"
+          }
+        ]
+      }
+    },
+    "\/dadosabertos/materia/emenda/{codigo}" : {
+      "get" : {
+        "tags" : [ "MateriaService" ],
+        "description" : "Obtém detalhes da emenda",
+        "operationId" : "emendaXml",
+        "responses" : {
+          "200" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }, 
+              "application/xml" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }, 
+              "text/csv" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }
+            },
+            "description" : "Retorna os detalhes da emenda"
+          }
+        },
+        "parameters" : [
+          {
+            "name" : "codigo",
+            "in" : "path",
+            "required" : true,
+            "schema" : {
+              "type" : "integer",
+              "format" : "int32"
+            },
+            "description" : "- Código do documento manifestação da emenda, a partir da versão 5. Para as anteriores, era o código\nda emenda."
+          },
+          {
+            "name" : "v",
+            "in" : "query",
+            "schema" : {
+              "type" : "integer",
+              "format" : "int32"
+            },
+            "description" : "(opcional) - Versão do serviço"
+          }
+        ]
+      }
+    },
+    "\/dadosabertos/materia/emendas/{codigo}" : {
+      "get" : {
+        "tags" : [ "MateriaService" ],
+        "description" : "Obtém as emendas de uma matéria",
+        "operationId" : "emendaMateriaXml",
+        "responses" : {
+          "200" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }, 
+              "application/xml" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }, 
+              "text/csv" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }
+            },
+            "description" : "Retorna as emendas da matéria informada"
+          }
+        },
+        "parameters" : [
+          {
+            "name" : "codigo",
+            "in" : "path",
+            "required" : true,
+            "schema" : {
+              "type" : "integer",
+              "format" : "int32"
+            },
+            "description" : "- Código da matéria no banco de dados."
+          },
+          {
+            "name" : "v",
+            "in" : "query",
+            "schema" : {
+              "type" : "integer",
+              "format" : "int32"
+            },
+            "description" : "(opcional) - Versão do serviço"
+          }
+        ]
+      }
+    },
+    "\/dadosabertos/materia/legislaturaatual" : {
+      "get" : {
+        "tags" : [ "MateriaService" ],
+        "description" : "Lista as matérias que estão em tramitação ou que tramitaram na Legislatura atual. Atenção: para pesquisar por\nperíodo da última atualização, utilize o serviço de matérias atualizadas.",
+        "operationId" : "listaMateriasLegislaturaAtual",
+        "responses" : {
+          "200" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }, 
+              "application/xml" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }, 
+              "text/csv" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }
+            },
+            "description" : "Retorna a lista de matérias que estão tramitando ou que tramitaram na legislatura atual"
+          }
+        },
+        "parameters" : [
+          {
+            "name" : "ano",
+            "in" : "query",
+            "schema" : {
+              "type" : "string"
+            },
+            "description" : "(opcional) - Ano da matéria"
+          },
+          {
+            "name" : "numero",
+            "in" : "query",
+            "schema" : {
+              "type" : "string"
+            },
+            "description" : "(opcional) - Número da matéria"
+          },
+          {
+            "name" : "sigla",
+            "in" : "query",
+            "schema" : {
+              "type" : "string"
+            },
+            "description" : "(opcional) - Sigla do subtipo da matéria"
+          },
+          {
+            "name" : "tramitando",
+            "in" : "query",
+            "schema" : {
+              "type" : "string"
+            },
+            "description" : "(opcional) (S ou N) - Retorna apenas as matérias que estão tramitando (S) ou apenas as que não\nestão (N). Se o parâmetro não for informado, retorna ambas."
+          },
+          {
+            "name" : "v",
+            "in" : "query",
+            "schema" : {
+              "type" : "integer",
+              "format" : "int32"
+            },
+            "description" : "(opcional) - Versão do serviço"
+          }
+        ]
+      }
+    },
+    "\/dadosabertos/materia/lista/autor/parlamentar/{codigo}" : {
+      "get" : {
+        "tags" : [ "ListaMateriaComissaoService" ],
+        "description" : "D E S C O N T I N U A D O !!!\n\nObtém a lista de matérias de autoria de um parlamentar",
+        "operationId" : "listaMateriasAutorParlamentarXml",
+        "responses" : {
+          "200" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }, 
+              "application/xml" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }
+            },
+            "description" : "Retorna a lista de matérias de autoria do parlamentar"
+          }
+        },
+        "parameters" : [
+          {
+            "name" : "codigo",
+            "in" : "path",
+            "required" : true,
+            "schema" : {
+              "type" : "integer",
+              "format" : "int32"
+            },
+            "description" : "- Código do parlamentar autor das matérias"
+          },
+          {
+            "name" : "comissao",
+            "in" : "query",
+            "schema" : {
+              "type" : "string"
+            },
+            "description" : "(opcional) - Sigla da comissão (em maiúsculo) para filtrar a lista"
+          },
+          {
+            "name" : "v",
+            "in" : "query",
+            "schema" : {
+              "type" : "integer",
+              "format" : "int32"
+            },
+            "description" : "(opcional) - Versão do serviço"
+          }
+        ]
+      }
+    },
+    "\/dadosabertos/materia/lista/comissao" : {
+      "get" : {
+        "tags" : [ "ListaMateriaComissaoService" ],
+        "description" : "Obtém a lista de matérias localizadas em comissões. É necessário informar ao menos um dos parâmetros -\nsiglaComissão ou codMateria.",
+        "operationId" : "listaMateriasComissaoXml",
+        "responses" : {
+          "200" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }, 
+              "application/xml" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }, 
+              "text/csv" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }
+            },
+            "description" : "Retorna a lista de matérias por comissão."
+          }
+        },
+        "parameters" : [
+          {
+            "name" : "comissao",
+            "in" : "query",
+            "schema" : {
+              "type" : "string"
+            },
+            "description" : "(opcional) - Sigla da comissão"
+          },
+          {
+            "name" : "materia",
+            "in" : "query",
+            "required" : true,
+            "schema" : {
+              "type" : "integer",
+              "format" : "int32"
+            },
+            "description" : "(opcional) - Código da matéria"
+          },
+          {
+            "name" : "situacao",
+            "in" : "query",
+            "schema" : {
+              "type" : "string"
+            },
+            "description" : "(opcional) - Sigla da situação atual da matéria"
+          },
+          {
+            "name" : "v",
+            "in" : "query",
+            "schema" : {
+              "type" : "integer",
+              "format" : "int32"
+            },
+            "description" : "(opcional) - Versão do serviço"
+          }
+        ]
+      }
+    },
+    "\/dadosabertos/materia/lista/prazo/{codPrazo}" : {
+      "get" : {
+        "tags" : [ "ListaMateriaPrazoService" ],
+        "description" : "Obtém a lista de matérias cumprindo prazo em plenário ou comissões. Se quiser que retorne todos os tipos de prazo,\ninforme \"0\" (zero) para o código do prazo.",
+        "operationId" : "listaMateriasPrazoXml",
+        "responses" : {
+          "200" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }, 
+              "application/xml" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }, 
+              "text/csv" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }
+            },
+            "description" : "lista de matérias do(s) tipo(s) de prazo especificado(s)"
+          }
+        },
+        "parameters" : [
+          {
+            "name" : "codPrazo",
+            "in" : "path",
+            "required" : true,
+            "schema" : {
+              "type" : "integer",
+              "format" : "int32"
+            },
+            "description" : "- Código do tipo do prazo"
+          },
+          {
+            "name" : "comissao",
+            "in" : "query",
+            "schema" : {
+              "type" : "string"
+            },
+            "description" : ""
+          },
+          {
+            "name" : "tipo",
+            "in" : "query",
+            "schema" : {
+              "type" : "string"
+            },
+            "description" : ""
+          },
+          {
+            "name" : "v",
+            "in" : "query",
+            "schema" : {
+              "type" : "integer",
+              "format" : "int32"
+            },
+            "description" : "(opcional) - Versão do serviço"
+          }
+        ]
+      }
+    },
+    "\/dadosabertos/materia/lista/relator/{codigo}" : {
+      "get" : {
+        "tags" : [ "ListaMateriaComissaoService" ],
+        "description" : "D E S C O N T I N U A D O !!!\n\nObtém a lista de matérias de um relator em uma comissão",
+        "operationId" : "listaMateriasRelatorXml",
+        "responses" : {
+          "200" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }, 
+              "application/xml" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }
+            },
+            "description" : "Retorna a lista de matérias do relator na comissão"
+          }
+        },
+        "parameters" : [
+          {
+            "name" : "codigo",
+            "in" : "path",
+            "required" : true,
+            "schema" : {
+              "type" : "integer",
+              "format" : "int32"
+            },
+            "description" : "- Código do parlamentar relator das matérias"
+          },
+          {
+            "name" : "comissao",
+            "in" : "query",
+            "schema" : {
+              "type" : "string"
+            },
+            "description" : "(opcional) - Sigla da comissão (em maiúsculo) para filtrar a lista"
+          },
+          {
+            "name" : "v",
+            "in" : "query",
+            "schema" : {
+              "type" : "integer",
+              "format" : "int32"
+            },
+            "description" : "(opcional) - Versão do serviço"
+          }
+        ]
+      }
+    },
+    "\/dadosabertos/materia/lista/tramitacao" : {
+      "get" : {
+        "tags" : [ "ListaMateriaComissaoService" ],
+        "description" : "Obtém o total das matérias em tramitação no Senado Federal agrupadas por tipo e comissão",
+        "operationId" : "listaMateriasEmTramitacaoXml",
+        "responses" : {
+          "200" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }, 
+              "application/xml" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }, 
+              "text/csv" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }
+            },
+            "description" : "Retorna o total de matérias em tramitação por comissão e por tipo (em cada comissão)"
+          }
+        },
+        "parameters" : [
+          {
+            "name" : "ano",
+            "in" : "query",
+            "schema" : {
+              "type" : "integer",
+              "format" : "int32"
+            },
+            "description" : "(opcional) - Ano (com 4 dígitos) da proposição"
+          },
+          {
+            "name" : "comissao",
+            "in" : "query",
+            "schema" : {
+              "type" : "string"
+            },
+            "description" : "(opcional) - Sigla da comissão"
+          },
+          {
+            "name" : "sigla",
+            "in" : "query",
+            "schema" : {
+              "type" : "string"
+            },
+            "description" : "(opcional) - Sigla do tipo de proposição (matéria)"
+          },
+          {
+            "name" : "v",
+            "in" : "query",
+            "schema" : {
+              "type" : "integer",
+              "format" : "int32"
+            },
+            "description" : "(opcional) - Versão do serviço"
+          }
+        ]
+      }
+    },
+    "\/dadosabertos/materia/lista/tramitacao/{tipo}" : {
+      "get" : {
+        "tags" : [ "ListaMateriaComissaoService" ],
+        "description" : "Obtém a lista de matérias em tramitação por tipo de proposição",
+        "operationId" : "listaMateriasEmTramitacaoComissaoXml",
+        "responses" : {
+          "200" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }, 
+              "application/xml" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }, 
+              "text/csv" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }
+            },
+            "description" : "Retorna a lista de matérias em tramitação do tipo especificado"
+          }
+        },
+        "parameters" : [
+          {
+            "name" : "tipo",
+            "in" : "path",
+            "required" : true,
+            "schema" : {
+              "type" : "string"
+            },
+            "description" : "- Sigla do tipo de proposição (em maiúsculo)"
+          },
+          {
+            "name" : "ano",
+            "in" : "query",
+            "schema" : {
+              "type" : "integer",
+              "format" : "int32"
+            },
+            "description" : "(opcional) - Ano (com 4 dígitos) da proposição para filtrar a lista"
+          },
+          {
+            "name" : "comissao",
+            "in" : "query",
+            "schema" : {
+              "type" : "string"
+            },
+            "description" : "(opcional) - Sigla da comissão (em maiúsculo) para filtrar a lista"
+          },
+          {
+            "name" : "numero",
+            "in" : "query",
+            "schema" : {
+              "type" : "string"
+            },
+            "description" : "(opcional) - Número de identificação da proposição para filtrar a lista"
+          },
+          {
+            "name" : "v",
+            "in" : "query",
+            "schema" : {
+              "type" : "integer",
+              "format" : "int32"
+            },
+            "description" : "(opcional) - Versão do serviço"
+          }
+        ]
+      }
+    },
+    "\/dadosabertos/materia/locais" : {
+      "get" : {
+        "tags" : [ "MateriaService" ],
+        "description" : "Lista entes jurídicos possíveis de localização de uma matéria",
+        "operationId" : "locaisXml",
+        "responses" : {
+          "200" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }, 
+              "application/xml" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }, 
+              "text/csv" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }
+            },
+            "description" : "Retorna a lista de entes jurídicos em que as matérias podem estar"
+          }
+        },
+        "parameters" : [
+        ]
+      }
+    },
+    "\/dadosabertos/materia/movimentacoes/{codigo}" : {
+      "get" : {
+        "tags" : [ "MateriaService" ],
+        "description" : "Obtém a movimentação da matéria, incluindo tramitação, prazos, despachos, situação",
+        "operationId" : "movimentacaoMateriaXml",
+        "responses" : {
+          "200" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }, 
+              "application/xml" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }, 
+              "text/csv" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }
+            },
+            "description" : "Retorna a movimentação (tramitação) da matéria informada"
+          }
+        },
+        "parameters" : [
+          {
+            "name" : "codigo",
+            "in" : "path",
+            "required" : true,
+            "schema" : {
+              "type" : "integer",
+              "format" : "int32"
+            },
+            "description" : "- Código da matéria no banco de dados"
+          },
+          {
+            "name" : "dataref",
+            "in" : "query",
+            "schema" : {
+              "type" : "string"
+            },
+            "description" : "(opcional), formato YYYYMMDD - Data de referência para filtrar tramitações"
+          },
+          {
+            "name" : "v",
+            "in" : "query",
+            "schema" : {
+              "type" : "integer",
+              "format" : "int32"
+            },
+            "description" : "(opcional) - Versão do serviço"
+          }
+        ]
+      }
+    },
+    "\/dadosabertos/materia/ordia/{codigo}" : {
+      "get" : {
+        "tags" : [ "MateriaService" ],
+        "description" : "Obtém as Sessões que a matéria foi incluída em Ordem do Dia",
+        "operationId" : "ordiaMateriaXml",
+        "responses" : {
+          "200" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }, 
+              "application/xml" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }, 
+              "text/csv" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }
+            },
+            "description" : "Retorna as Sessões que a matéria foi incluída em Ordem do Dia"
+          }
+        },
+        "parameters" : [
+          {
+            "name" : "codigo",
+            "in" : "path",
+            "required" : true,
+            "schema" : {
+              "type" : "integer",
+              "format" : "int32"
+            },
+            "description" : "- Código da matéria no banco de dados"
+          },
+          {
+            "name" : "v",
+            "in" : "query",
+            "schema" : {
+              "type" : "integer",
+              "format" : "int32"
+            },
+            "description" : "(opcional) - Versão do serviço"
+          }
+        ]
+      }
+    },
+    "\/dadosabertos/materia/pesquisa/lista" : {
+      "get" : {
+        "tags" : [ "PesquisaMateriaService" ],
+        "description" : "Pesquisa básica de matérias (busca as matérias que satisfazem aos parâmetros informados). Atenção: 1) Se não\ninformar o ano (da matéria ou da norma) nem o período de apresentação, será considerado o ano atual. 2) Para a\npesquisa por período de apresentação, o limite é de 1 ano.",
+        "operationId" : "materiaListaPesquisa",
+        "responses" : {
+          "200" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }, 
+              "application/xml" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }, 
+              "text/csv" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }
+            },
+            "description" : "Retorna as informações básicas das matérias resultantes da pesquisa."
+          }
+        },
+        "parameters" : [
+          {
+            "name" : "ano",
+            "in" : "query",
+            "schema" : {
+              "type" : "string"
+            },
+            "description" : "(opcional) ano da matéria"
+          },
+          {
+            "name" : "anoNorma",
+            "in" : "query",
+            "schema" : {
+              "type" : "string"
+            },
+            "description" : "(opcional) ano da norma jurídica gerada"
+          },
+          {
+            "name" : "codigoClasse",
+            "in" : "query",
+            "schema" : {
+              "type" : "string"
+            },
+            "description" : "(opcional) código da classificação da matéria"
+          },
+          {
+            "name" : "codigoConteudo",
+            "in" : "query",
+            "schema" : {
+              "type" : "string"
+            },
+            "description" : "(opcional) código do conteúdo informacional da matéria"
+          },
+          {
+            "name" : "dataFimApresentacao",
+            "in" : "query",
+            "schema" : {
+              "type" : "string"
+            },
+            "description" : "(opcional) data de fim para pesquisa da data de apresentação da matéria, no formato\nAAAAMMDD"
+          },
+          {
+            "name" : "dataInicioApresentacao",
+            "in" : "query",
+            "schema" : {
+              "type" : "string"
+            },
+            "description" : "(opcional) data de início para pesquisa da data de apresentação da matéria, no\nformato AAAAMMDD"
+          },
+          {
+            "name" : "nomeAutor",
+            "in" : "query",
+            "schema" : {
+              "type" : "string"
+            },
+            "description" : "(opcional) nome do autor da matéria"
+          },
+          {
+            "name" : "numero",
+            "in" : "query",
+            "schema" : {
+              "type" : "string"
+            },
+            "description" : "(opcional) número da matéria"
+          },
+          {
+            "name" : "numeroNorma",
+            "in" : "query",
+            "schema" : {
+              "type" : "string"
+            },
+            "description" : "(opcional) número da norma jurídica gerada"
+          },
+          {
+            "name" : "palavraChave",
+            "in" : "query",
+            "schema" : {
+              "type" : "string"
+            },
+            "description" : "palavra (opcional) chave para a pesquisa"
+          },
+          {
+            "name" : "sigla",
+            "in" : "query",
+            "schema" : {
+              "type" : "string"
+            },
+            "description" : "(opcional) sigla da matéria"
+          },
+          {
+            "name" : "siglaComissaoReq",
+            "in" : "query",
+            "schema" : {
+              "type" : "string"
+            },
+            "description" : "(opcional) sigla da comissão do requerimento - para requerimentos de comissão a partir de\n2019"
+          },
+          {
+            "name" : "tipoNorma",
+            "in" : "query",
+            "schema" : {
+              "type" : "string"
+            },
+            "description" : "(opcional) sigla do tipo da norma jurídica gerada"
+          },
+          {
+            "name" : "tramitando",
+            "in" : "query",
+            "schema" : {
+              "type" : "string"
+            },
+            "description" : "(opcional) indica se retorna apenas as matérias que estão tramitando (\"S\") ou não (\"N\")"
+          },
+          {
+            "name" : "v",
+            "in" : "query",
+            "schema" : {
+              "type" : "integer",
+              "format" : "int32"
+            },
+            "description" : "(opcional) versão do serviço"
+          }
+        ]
+      }
+    },
+    "\/dadosabertos/materia/relatorias/{codigo}" : {
+      "get" : {
+        "tags" : [ "MateriaService" ],
+        "description" : "Obtém as relatorias de uma matéria",
+        "operationId" : "relatoriaMateriaXml",
+        "responses" : {
+          "200" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }, 
+              "application/xml" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }, 
+              "text/csv" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }
+            },
+            "description" : "Retorna as relatorias da matéria informada"
+          }
+        },
+        "parameters" : [
+          {
+            "name" : "codigo",
+            "in" : "path",
+            "required" : true,
+            "schema" : {
+              "type" : "integer",
+              "format" : "int32"
+            },
+            "description" : "- Código (ID) da matéria. Identificador único da matéria."
+          },
+          {
+            "name" : "v",
+            "in" : "query",
+            "schema" : {
+              "type" : "integer",
+              "format" : "int32"
+            },
+            "description" : "(opcional) - Versão do serviço"
+          }
+        ]
+      }
+    },
+    "\/dadosabertos/materia/situacaoatual/tramitacao/{data}" : {
+      "get" : {
+        "tags" : [ "MateriaService" ],
+        "description" : "Traz a situação atual e o local das matérias que tramitaram na data especificada",
+        "operationId" : "listaSituacaoAtual",
+        "responses" : {
+          "200" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }, 
+              "application/xml" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }, 
+              "text/csv" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }
+            },
+            "description" : "Retorna a situação atual e o local da matéria"
+          }
+        },
+        "parameters" : [
+          {
+            "name" : "data",
+            "in" : "path",
+            "required" : true,
+            "schema" : {
+              "type" : "string"
+            },
+            "description" : "- Data da tramitação"
+          },
+          {
+            "name" : "v",
+            "in" : "query",
+            "schema" : {
+              "type" : "integer",
+              "format" : "int32"
+            },
+            "description" : "(opcional) - Versão do serviço"
+          }
+        ]
+      }
+    },
+    "\/dadosabertos/materia/situacaoatual/{codigo}" : {
+      "get" : {
+        "tags" : [ "MateriaService" ],
+        "description" : "Traz a situação atual e o local da matéria especificada",
+        "operationId" : "listaSituacaoAtual2",
+        "responses" : {
+          "200" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }, 
+              "application/xml" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }, 
+              "text/csv" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }
+            },
+            "description" : "Retorna a situação atual e o local da matéria"
+          }
+        },
+        "parameters" : [
+          {
+            "name" : "codigo",
+            "in" : "path",
+            "required" : true,
+            "schema" : {
+              "type" : "integer",
+              "format" : "int32"
+            },
+            "description" : "- Código da matéria"
+          },
+          {
+            "name" : "v",
+            "in" : "query",
+            "schema" : {
+              "type" : "integer",
+              "format" : "int32"
+            },
+            "description" : "(opcional) - Versão do serviço"
+          }
+        ]
+      }
+    },
+    "\/dadosabertos/materia/situacoes" : {
+      "get" : {
+        "tags" : [ "MateriaService" ],
+        "description" : "Lista as situações possíveis de matérias",
+        "operationId" : "listaSituacoesXml",
+        "responses" : {
+          "200" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }, 
+              "application/xml" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }, 
+              "text/csv" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }
+            },
+            "description" : "Retorna a lista de Situações"
+          }
+        },
+        "parameters" : [
+        ]
+      }
+    },
+    "\/dadosabertos/materia/subtipos" : {
+      "get" : {
+        "tags" : [ "MateriaService" ],
+        "description" : "Lista subtipos e siglas de projetos e matérias",
+        "operationId" : "subtiposMateriaXml",
+        "responses" : {
+          "200" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }, 
+              "application/xml" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }, 
+              "text/csv" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }
+            },
+            "description" : "Retorna a lista de subtipos e siglas de projetos e matérias"
+          }
+        },
+        "parameters" : [
+        ]
+      }
+    },
+    "\/dadosabertos/materia/textos/{codigo}" : {
+      "get" : {
+        "tags" : [ "MateriaService" ],
+        "description" : "Obtém os textos integrais e a legislação citada de uma matéria",
+        "operationId" : "textoMateriaXml",
+        "responses" : {
+          "200" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }, 
+              "application/xml" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }, 
+              "text/csv" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }
+            },
+            "description" : "Retorna os textos integrais e a legislação citada da matéria informada"
+          }
+        },
+        "parameters" : [
+          {
+            "name" : "codigo",
+            "in" : "path",
+            "required" : true,
+            "schema" : {
+              "type" : "integer",
+              "format" : "int32"
+            },
+            "description" : "- Código da matéria no banco de dados"
+          },
+          {
+            "name" : "v",
+            "in" : "query",
+            "schema" : {
+              "type" : "integer",
+              "format" : "int32"
+            },
+            "description" : "(opcional) - Versão do serviço"
+          }
+        ]
+      }
+    },
+    "\/dadosabertos/materia/tiposComparecimento" : {
+      "get" : {
+        "tags" : [ "MateriaService" ],
+        "description" : "Lista os tipos de comparecimento em votação",
+        "operationId" : "listaTiposComparecimentoXml",
+        "responses" : {
+          "200" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }, 
+              "application/xml" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }, 
+              "text/csv" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }
+            },
+            "description" : "Retorna a lista de tipos de comparecimento em votação"
+          }
+        },
+        "parameters" : [
+        ]
+      }
+    },
+    "\/dadosabertos/materia/tiposEmenda" : {
+      "get" : {
+        "tags" : [ "MateriaService" ],
+        "description" : "Lista os tipos de Emenda",
+        "operationId" : "listaTiposEmendaXml",
+        "responses" : {
+          "200" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }, 
+              "application/xml" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }, 
+              "text/csv" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }
+            },
+            "description" : "Retorna a lista de tipos de Emenda"
+          }
+        },
+        "parameters" : [
+        ]
+      }
+    },
+    "\/dadosabertos/materia/tiposNatureza" : {
+      "get" : {
+        "tags" : [ "MateriaService" ],
+        "description" : "Lista os tipos de natureza das matérias",
+        "operationId" : "listaTiposNaturezaXml",
+        "responses" : {
+          "200" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }, 
+              "application/xml" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }, 
+              "text/csv" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }
+            },
+            "description" : "Retorna a lista de tipos de natureza de matérias"
+          }
+        },
+        "parameters" : [
+        ]
+      }
+    },
+    "\/dadosabertos/materia/tiposNorma" : {
+      "get" : {
+        "tags" : [ "MateriaService" ],
+        "description" : "Lista tipos de Normas Jurídicas",
+        "operationId" : "listaTiposNorma",
+        "responses" : {
+          "200" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }, 
+              "application/xml" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }, 
+              "text/csv" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }
+            },
+            "description" : "Retorna a lista de tipos de Normas Jurídicas"
+          }
+        },
+        "parameters" : [
+        ]
+      }
+    },
+    "\/dadosabertos/materia/tiposPrazo" : {
+      "get" : {
+        "tags" : [ "MateriaService" ],
+        "description" : "Lista tipos de prazos aos quais projetos e matérias podem estar sujeitos",
+        "operationId" : "listaTiposPrazosXml",
+        "responses" : {
+          "200" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }, 
+              "application/xml" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }, 
+              "text/csv" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }
+            },
+            "description" : "Lista de Tipos de Prazos"
+          }
+        },
+        "parameters" : [
+        ]
+      }
+    },
+    "\/dadosabertos/materia/tiposPrazo/conversao" : {
+      "get" : {
+        "tags" : [ "MateriaService" ],
+        "description" : "Lista conversão dos tipos de prazos, do sistema antigo (versão 4 do serviço tiposPrazo) para o sistema novo (versão\n6)",
+        "operationId" : "listaConversaoTiposPrazosXml",
+        "responses" : {
+          "200" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }, 
+              "application/xml" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }, 
+              "text/csv" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }
+            },
+            "description" : "Lista de Tipos de Prazos"
+          }
+        },
+        "parameters" : [
+        ]
+      }
+    },
+    "\/dadosabertos/materia/tiposTurnoApresentacao" : {
+      "get" : {
+        "tags" : [ "MateriaService" ],
+        "description" : "Lista os tipos de turno de apresentação de emenda no processo",
+        "operationId" : "listaTiposTurnoApresentacaoXml",
+        "responses" : {
+          "200" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }, 
+              "application/xml" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }, 
+              "text/csv" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }
+            },
+            "description" : "Retorna a lista de tipos de turno de apresentação de emenda no processo"
+          }
+        },
+        "parameters" : [
+        ]
+      }
+    },
+    "\/dadosabertos/materia/tiposatualizacoes" : {
+      "get" : {
+        "tags" : [ "MateriaService" ],
+        "description" : "Obtém os tipos de atualização em matéria que podem ter ocorrido",
+        "operationId" : "tiposAtualizacoesXml",
+        "responses" : {
+          "200" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }, 
+              "application/xml" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }, 
+              "text/csv" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }
+            },
+            "description" : "Retorna os tipos de atualização em matéria"
+          }
+        },
+        "parameters" : [
+        ]
+      }
+    },
+    "\/dadosabertos/materia/tramitando" : {
+      "get" : {
+        "tags" : [ "MateriaService" ],
+        "description" : "Lista as matérias que estão em tramitação (não tem informações de comissões)",
+        "operationId" : "listaMateriasTramitando",
+        "responses" : {
+          "200" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }, 
+              "application/xml" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }, 
+              "text/csv" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }
+            },
+            "description" : "Retorna a lista de matérias que estão tramitando"
+          }
+        },
+        "parameters" : [
+          {
+            "name" : "ano",
+            "in" : "query",
+            "schema" : {
+              "type" : "string"
+            },
+            "description" : "(opcional) - Ano da matéria"
+          },
+          {
+            "name" : "data",
+            "in" : "query",
+            "schema" : {
+              "type" : "string"
+            },
+            "description" : "(opcional) formato (YYYYMMDD) - Parâmetro usado para que sejam retornadas apenas as matérias cuja\núltima atualização é igual ou posterior à data informada"
+          },
+          {
+            "name" : "hora",
+            "in" : "query",
+            "schema" : {
+              "type" : "string"
+            },
+            "description" : "(opcional) formato (HHMISS) - Onde HH é no padrão 24 horas e MI representa os minutos, com 2 dígitos -\nparâmetro usado para que sejam retornadas apenas as matérias cuja hora da última atualização é igual ou\nposterior à hora informada. Deve ser informado apenas se a data também for informada."
+          },
+          {
+            "name" : "numero",
+            "in" : "query",
+            "schema" : {
+              "type" : "string"
+            },
+            "description" : "(opcional) - Número da matéria"
+          },
+          {
+            "name" : "sigla",
+            "in" : "query",
+            "schema" : {
+              "type" : "string"
+            },
+            "description" : "(opcional) - Sigla do subtipo da matéria"
+          },
+          {
+            "name" : "v",
+            "in" : "query",
+            "schema" : {
+              "type" : "integer",
+              "format" : "int32"
+            },
+            "description" : "(opcional) - Versão do serviço"
+          }
+        ]
+      }
+    },
+    "\/dadosabertos/materia/votacoes/{codigo}" : {
+      "get" : {
+        "tags" : [ "MateriaService" ],
+        "description" : "Obtém as votações de uma matéria",
+        "operationId" : "votacaoMateriaXml",
+        "responses" : {
+          "200" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }, 
+              "application/xml" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }, 
+              "text/csv" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }
+            },
+            "description" : "Retorna as votações da matéria informada"
+          }
+        },
+        "parameters" : [
+          {
+            "name" : "codigo",
+            "in" : "path",
+            "required" : true,
+            "schema" : {
+              "type" : "integer",
+              "format" : "int32"
+            },
+            "description" : "- Código da matéria no banco de dados"
+          },
+          {
+            "name" : "v",
+            "in" : "query",
+            "schema" : {
+              "type" : "integer",
+              "format" : "int32"
+            },
+            "description" : "(opcional) - Versão do serviço"
+          }
+        ]
+      }
+    },
+    "\/dadosabertos/materia/{codigo}" : {
+      "get" : {
+        "tags" : [ "MateriaService" ],
+        "description" : "Obtém detalhes de uma matéria <font color=\"navy\">\n<p>\n<strong><u>Aviso:<\/u><\/strong>\n<\/p>\n<p>\nOs serviços que compõem as informações detalhadas sobre matéria são:\n<\/p>\n<ul>\n<li>Detalhe da matéria: <a href=\n\"http://legis.senado.leg.br/dadosabertos/docs/resource_MateriaService.html#resource_MateriaService_materiaXml_GET\">/materia/{codigo}<\/a>\nou <br/>\n<a href=\n\"http://legis.senado.leg.br/dadosabertos/docs/resource_MateriaService.html#resource_MateriaService_materiaXml_GET\">/materia/{sigla}/{numero}/{ano}<\/a><\/li>\n<li>Movimentações: <a href=\n\"http://legis.senado.leg.br/dadosabertos/docs/resource_MateriaService.html#resource_MateriaService_movimentacaoMateriaXml_GET\">/materia/movimentacoes/{codigo}<\/a><\/li>\n<li>Textos: <a href=\n\"http://legis.senado.leg.br/dadosabertos/docs/resource_MateriaService.html#resource_MateriaService_textoMateriaXml_GET\">/materia/textos/{codigo}<\/a><\/li>\n<li>Autorias: <a href=\n\"http://legis.senado.leg.br/dadosabertos/docs/resource_MateriaService.html#resource_MateriaService_autoriaMateriaXml_GET\">/materia/autoria/{codigo}<\/a><\/li>\n<li>Relatorias: <a href=\n\"http://legis.senado.leg.br/dadosabertos/docs/resource_MateriaService.html#resource_MateriaService_relatoriaMateriaXml_GET\">/materia/relatorias/{codigo}<\/a><\/li>\n<li>Emendas: <a href=\n\"http://legis.senado.leg.br/dadosabertos/docs/resource_MateriaService.html#resource_MateriaService_emendaMateriaXml_GET\">/materia/emendas/{codigo}<\/a><\/li>\n<li>Votações: <a href=\n\"http://legis.senado.leg.br/dadosabertos/docs/resource_MateriaService.html#resource_MateriaService_votacaoMateriaXml_GET\">/materia/votacoes/{codigo}<\/a><\/li>\n<li>Atualizações: <a href=\n\"http://legis.senado.leg.br/dadosabertos/docs/resource_MateriaService.html#resource_MateriaService_atualizacoesMateriaXml_GET\">/materia/atualizacoes/{codigo}<\/a><\/li>\n<\/ul>\n<\/font>",
+        "operationId" : "materiaXml",
+        "responses" : {
+          "200" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }, 
+              "application/xml" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }, 
+              "text/csv" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }
+            },
+            "description" : "Retorna os detalhes da matéria informada"
+          }
+        },
+        "parameters" : [
+          {
+            "name" : "codigo",
+            "in" : "path",
+            "required" : true,
+            "schema" : {
+              "type" : "integer",
+              "format" : "int32"
+            },
+            "description" : "- Código da matéria"
+          },
+          {
+            "name" : "v",
+            "in" : "query",
+            "schema" : {
+              "type" : "integer",
+              "format" : "int32"
+            },
+            "description" : "(opcional) - Versão do serviço"
+          }
+        ]
+      }
+    },
+    "\/dadosabertos/materia/{sigla}/{numero}/{ano}" : {
+      "get" : {
+        "tags" : [ "MateriaService" ],
+        "description" : "Obtém os detalhes da última matéria no Senado que corresponde às informações de sigla, número e ano informadas. A\npartir de fevereiro 2019, os requerimentos de comissões permanentes passam a ser numerados com a mesma sistemática\ndos requerimentos das comissões temporárias, seguindo, portanto, o padrão: REQ 99/2019 - SIGLA_COMISSÃO. Dessa\nforma, para se buscar um requerimento de determinada comissão (com ano >= 2019), deve-se informar\n.../materia/req/numero do requerimento/ano do requerimento?comissao=sigla da comissão <font color=\"navy\">\n<p>\n<strong><u>Aviso:<\/u><\/strong>\n<\/p>\n<p>\nOs serviços que compõem as informações detalhadas sobre matéria são:\n<\/p>\n<ul>\n<li>Detalhe da matéria: <a href=\n\"http://legis.senado.leg.br/dadosabertos/docs/resource_MateriaService.html#resource_MateriaService_materiaXml_GET\">/materia/{codigo}<\/a>\nou<br/>\n<a href=\n\"http://legis.senado.leg.br/dadosabertos/docs/resource_MateriaService.html#resource_MateriaService_materiaXml_GET\">/materia/{sigla}/{numero}/{ano}<\/a><\/li>\n<li>Movimentações: <a href=\n\"http://legis.senado.leg.br/dadosabertos/docs/resource_MateriaService.html#resource_MateriaService_movimentacaoMateriaXml_GET\">/materia/movimentacoes/{codigo}<\/a><\/li>\n<li>Textos: <a href=\n\"http://legis.senado.leg.br/dadosabertos/docs/resource_MateriaService.html#resource_MateriaService_textoMateriaXml_GET\">/materia/textos/{codigo}<\/a><\/li>\n<li>Autorias: <a href=\n\"http://legis.senado.leg.br/dadosabertos/docs/resource_MateriaService.html#resource_MateriaService_autoriaMateriaXml_GET\">/materia/autoria/{codigo}<\/a><\/li>\n<li>Relatorias: <a href=\n\"http://legis.senado.leg.br/dadosabertos/docs/resource_MateriaService.html#resource_MateriaService_relatoriaMateriaXml_GET\">/materia/relatorias/{codigo}<\/a><\/li>\n<li>Emendas: <a href=\n\"http://legis.senado.leg.br/dadosabertos/docs/resource_MateriaService.html#resource_MateriaService_emendaMateriaXml_GET\">/materia/emendas/{codigo}<\/a><\/li>\n<li>Votações: <a href=\n\"http://legis.senado.leg.br/dadosabertos/docs/resource_MateriaService.html#resource_MateriaService_votacaoMateriaXml_GET\">/materia/votacoes/{codigo}<\/a><\/li>\n<li>Atualizações: <a href=\n\"http://legis.senado.leg.br/dadosabertos/docs/resource_MateriaService.html#resource_MateriaService_atualizacoesMateriaXml_GET\">/materia/atualizacoes/{codigo}<\/a><\/li>\n<\/ul>\n<\/font>",
+        "operationId" : "materiaXml2",
+        "responses" : {
+          "200" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }, 
+              "application/xml" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }, 
+              "text/csv" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }
+            },
+            "description" : "Retorna os detalhes da matéria informada"
+          }
+        },
+        "parameters" : [
+          {
+            "name" : "ano",
+            "in" : "path",
+            "required" : true,
+            "schema" : {
+              "type" : "integer",
+              "format" : "int32"
+            },
+            "description" : "- Ano (com 4 dígitos) da proposição"
+          },
+          {
+            "name" : "numero",
+            "in" : "path",
+            "required" : true,
+            "schema" : {
+              "type" : "string"
+            },
+            "description" : "- Número da proposição"
+          },
+          {
+            "name" : "sigla",
+            "in" : "path",
+            "required" : true,
+            "schema" : {
+              "type" : "string"
+            },
+            "description" : "- Sigla do tipo de proposição (em maiúsculo)"
+          },
+          {
+            "name" : "comissao",
+            "in" : "query",
+            "schema" : {
+              "type" : "string"
+            },
+            "description" : "(opcional) - Sigla da comissão -> necessário para requerimentos de comissão criados a partir de\n2019 (com sigla REQ)"
+          },
+          {
+            "name" : "v",
+            "in" : "query",
+            "schema" : {
+              "type" : "integer",
+              "format" : "int32"
+            },
+            "description" : "(opcional) - Versão do serviço"
+          }
+        ]
+      }
+    },
+    "\/dadosabertos/orcamento/lista" : {
+      "get" : {
+        "tags" : [ "OrcamentoService" ],
+        "description" : "Obtém a lista dos lotes de emendas orçamentárias",
+        "operationId" : "orcamentoXml",
+        "responses" : {
+          "200" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }, 
+              "application/xml" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }, 
+              "text/csv" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }
+            },
+            "description" : "Retorna a lista de lotes de emendas orçamentárias"
+          }
+        },
+        "parameters" : [
+        ]
+      }
+    },
+    "\/dadosabertos/plenario/agenda/atual/iCal" : {
+      "get" : {
+        "tags" : [ "PlenarioService" ],
+        "description" : "Obtém a agenda de Plenário 30 dias a partir da data atual",
+        "operationId" : "agendaMesPlenarioFormatoIcalendar",
+        "responses" : {
+          "200" : {
+            "content" : {
+              "text/calendar" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }
+            },
+            "description" : "Retorna a agenda do Plenário para os próximos 30 dias"
+          }
+        },
+        "parameters" : [
+        ]
+      }
+    },
+    "\/dadosabertos/plenario/agenda/dia/{data}" : {
+      "get" : {
+        "tags" : [ "PlenarioService" ],
+        "operationId" : "agendaDiaPlenarioXml",
+        "responses" : {
+          "200" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }, 
+              "application/xml" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }, 
+              "text/csv" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }
+            },
+            "description" : "Retorna a agenda do dia informado"
+          }
+        },
+        "parameters" : [
+          {
+            "name" : "data",
+            "in" : "path",
+            "required" : true,
+            "schema" : {
+              "type" : "string"
+            },
+            "description" : "- Data no formato AAAAMMDD"
+          },
+          {
+            "name" : "v",
+            "in" : "query",
+            "schema" : {
+              "type" : "integer",
+              "format" : "int32"
+            },
+            "description" : ""
+          }
+        ]
+      }
+    },
+    "\/dadosabertos/plenario/agenda/mes/{data}" : {
+      "get" : {
+        "tags" : [ "PlenarioService" ],
+        "description" : "Obtém a agenda do mês a partir da data informada",
+        "operationId" : "agendaMesPlenarioXml",
+        "responses" : {
+          "200" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }, 
+              "application/xml" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }, 
+              "text/csv" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }
+            },
+            "description" : "Retorna a agenda do plenário no mês informado (a partir da data informada até o final do mês)"
+          }
+        },
+        "parameters" : [
+          {
+            "name" : "data",
+            "in" : "path",
+            "required" : true,
+            "schema" : {
+              "type" : "string"
+            },
+            "description" : "- Data início no formato AAAAMMDD"
+          },
+          {
+            "name" : "v",
+            "in" : "query",
+            "schema" : {
+              "type" : "integer",
+              "format" : "int32"
+            },
+            "description" : ""
+          }
+        ]
+      }
+    },
+    "\/dadosabertos/plenario/encontro/{codigo}" : {
+      "get" : {
+        "tags" : [ "PlenarioService" ],
+        "description" : "Dados de um encontro. Recupera os dados básicos do Encontro Legislativo bem como os Oradores, Pauta e demais\nregistros quando houver.",
+        "operationId" : "dadosEncontroXml",
+        "responses" : {
+          "200" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }, 
+              "application/xml" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }, 
+              "text/csv" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }
+            },
+            "description" : "Retorna os dados do Encontro Legislativo"
+          }
+        },
+        "parameters" : [
+          {
+            "name" : "codigo",
+            "in" : "path",
+            "required" : true,
+            "schema" : {
+              "type" : "integer",
+              "format" : "int32"
+            },
+            "description" : "Código do Encontro Legislativo"
+          }
+        ]
+      }
+    },
+    "\/dadosabertos/plenario/encontro/{codigo}/pauta" : {
+      "get" : {
+        "tags" : [ "PlenarioService" ],
+        "description" : "Itens de Pauta do Encontro Legislativo",
+        "operationId" : "pautaEncontroXml",
+        "responses" : {
+          "200" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }, 
+              "application/xml" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }, 
+              "text/csv" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }
+            },
+            "description" : "Retorna os Itens de Pauta do Encontro Legislativo"
+          }
+        },
+        "parameters" : [
+          {
+            "name" : "codigo",
+            "in" : "path",
+            "required" : true,
+            "schema" : {
+              "type" : "integer",
+              "format" : "int32"
+            },
+            "description" : "Código do Encontro Legislativo"
+          }
+        ]
+      }
+    },
+    "\/dadosabertos/plenario/encontro/{codigo}/resultado" : {
+      "get" : {
+        "tags" : [ "PlenarioService" ],
+        "description" : "Resultado de um Encontro Legislativo",
+        "operationId" : "resultadoEncontroXml",
+        "responses" : {
+          "200" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }, 
+              "application/xml" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }, 
+              "text/csv" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }
+            },
+            "description" : "Retorna o resultado do encontro"
+          }
+        },
+        "parameters" : [
+          {
+            "name" : "codigo",
+            "in" : "path",
+            "required" : true,
+            "schema" : {
+              "type" : "integer",
+              "format" : "int32"
+            },
+            "description" : "Código do Encontro Legislativo"
+          }
+        ]
+      }
+    },
+    "\/dadosabertos/plenario/encontro/{codigo}/resumo" : {
+      "get" : {
+        "tags" : [ "PlenarioService" ],
+        "description" : "Resumo do Encontro Legislativo",
+        "operationId" : "resumoEncontroXml",
+        "responses" : {
+          "200" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }, 
+              "application/xml" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }, 
+              "text/csv" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }
+            },
+            "description" : "Retorna o resumo do Encontro Legislativo, sem os registros-filhos."
+          }
+        },
+        "parameters" : [
+          {
+            "name" : "codigo",
+            "in" : "path",
+            "required" : true,
+            "schema" : {
+              "type" : "integer",
+              "format" : "int32"
+            },
+            "description" : "Código do Encontro Legislativo"
+          }
+        ]
+      }
+    },
+    "\/dadosabertos/plenario/legislatura/sessaoLegislativa/{dataSessaoLeg}" : {
+      "get" : {
+        "tags" : [ "PlenarioService" ],
+        "description" : "Obtém a legislatura da data da sessão legislativa informada",
+        "operationId" : "legislaturaDataSessaoXml",
+        "responses" : {
+          "200" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }, 
+              "application/xml" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }, 
+              "text/csv" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }
+            },
+            "description" : "Retorna a legislatura da data da sessão legislativa informada"
+          }
+        },
+        "parameters" : [
+          {
+            "name" : "dataSessaoLeg",
+            "in" : "path",
+            "required" : true,
+            "schema" : {
+              "type" : "string"
+            },
+            "description" : ""
+          },
+          {
+            "name" : "v",
+            "in" : "query",
+            "schema" : {
+              "type" : "integer",
+              "format" : "int32"
+            },
+            "description" : "(opcional) - Versão do serviço"
+          }
+        ]
+      }
+    },
+    "\/dadosabertos/plenario/legislatura/{data}" : {
+      "get" : {
+        "tags" : [ "PlenarioService" ],
+        "description" : "Obtém a legislatura da data informada e suas sessões legislativas",
+        "operationId" : "legislaturaDataXml",
+        "responses" : {
+          "200" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }, 
+              "application/xml" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }, 
+              "text/csv" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }
+            },
+            "description" : "Retorna a legislatura da data informada e suas sessões legislativas"
+          }
+        },
+        "parameters" : [
+          {
+            "name" : "data",
+            "in" : "path",
+            "required" : true,
+            "schema" : {
+              "type" : "string"
+            },
+            "description" : "- Data no formato AAAAMMDD"
+          },
+          {
+            "name" : "v",
+            "in" : "query",
+            "schema" : {
+              "type" : "integer",
+              "format" : "int32"
+            },
+            "description" : "(opcional) - Versão do serviço"
+          }
+        ]
+      }
+    },
+    "\/dadosabertos/plenario/lista/discursos/{dataInicio}/{dataFim}" : {
+      "get" : {
+        "tags" : [ "PlenarioService" ],
+        "description" : "Obtém a lista de discursos da(s) sessão(ões) que ocorreram dentro do período informado",
+        "operationId" : "listaDiscursosSessaoXml",
+        "responses" : {
+          "200" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }, 
+              "application/xml" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }, 
+              "text/csv" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }
+            },
+            "description" : "Retorna a lista de discursos da(s) sessão(ões) do período informado"
+          }
+        },
+        "parameters" : [
+          {
+            "name" : "dataFim",
+            "in" : "path",
+            "required" : true,
+            "schema" : {
+              "type" : "string"
+            },
+            "description" : "- Data fim para as sessões da consulta no formato AAAAMMDD"
+          },
+          {
+            "name" : "dataInicio",
+            "in" : "path",
+            "required" : true,
+            "schema" : {
+              "type" : "string"
+            },
+            "description" : "- Data inicial para as sessões da consulta no formato AAAAMMDD"
+          },
+          {
+            "name" : "numeroSessao",
+            "in" : "query",
+            "schema" : {
+              "type" : "string"
+            },
+            "description" : "(opcional) - Número da sessao"
+          },
+          {
+            "name" : "siglaCasa",
+            "in" : "query",
+            "schema" : {
+              "type" : "string"
+            },
+            "description" : "(opcional) - Sigla da casa (SF = Senado Federal, CN = Congresso Nacional)"
+          },
+          {
+            "name" : "tipoSessao",
+            "in" : "query",
+            "schema" : {
+              "type" : "string"
+            },
+            "description" : "(opcional) - Sigla do tipo de sessão"
+          },
+          {
+            "name" : "v",
+            "in" : "query",
+            "schema" : {
+              "type" : "integer",
+              "format" : "int32"
+            },
+            "description" : "(opcional) - Versão do serviço"
+          }
+        ]
+      }
+    },
+    "\/dadosabertos/plenario/lista/legislaturas" : {
+      "get" : {
+        "tags" : [ "PlenarioService" ],
+        "description" : "Obtém a lista de todas as legislaturas e suas sessões legislativas",
+        "operationId" : "listaLegislaturas",
+        "responses" : {
+          "200" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }, 
+              "application/xml" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }, 
+              "text/csv" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }
+            },
+            "description" : "Retorna a lista de todas as legislaturas e suas sessões legislativas em ordem decrescente de número da\nlegislatura"
+          }
+        },
+        "parameters" : [
+          {
+            "name" : "v",
+            "in" : "query",
+            "schema" : {
+              "type" : "integer",
+              "format" : "int32"
+            },
+            "description" : "(opcional) - Versão do serviço"
+          }
+        ]
+      }
+    },
+    "\/dadosabertos/plenario/lista/liderancas" : {
+      "get" : {
+        "tags" : [ "PlenarioService" ],
+        "description" : "Obtém a lista das Lideranças no Senado Federal",
+        "operationId" : "listaLiderancas",
+        "responses" : {
+          "200" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }, 
+              "application/xml" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }, 
+              "text/csv" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }
+            },
+            "description" : "Retorna a lista das lideranças"
+          }
+        },
+        "parameters" : [
+          {
+            "name" : "v",
+            "in" : "query",
+            "schema" : {
+              "type" : "integer",
+              "format" : "int32"
+            },
+            "description" : "(opcional) - Versão do serviço"
+          }
+        ]
+      }
+    },
+    "\/dadosabertos/plenario/lista/votacao/{dataInicio}/{dataFim}" : {
+      "get" : {
+        "tags" : [ "PlenarioService" ],
+        "description" : "Obtém a lista das votações da(s) sessão(ões) que ocorreram no período informado. O período não pode ser superior a\ndois meses.",
+        "operationId" : "listaVotacoesSessaoXml",
+        "responses" : {
+          "200" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }, 
+              "application/xml" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }, 
+              "text/csv" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }
+            },
+            "description" : "Retorna a lista das votações da(s) sessão(ões) que ocorreram no período informado"
+          }
+        },
+        "parameters" : [
+          {
+            "name" : "dataFim",
+            "in" : "path",
+            "required" : true,
+            "schema" : {
+              "type" : "string"
+            },
+            "description" : "- Data de fim do período no formato AAAAMMDD"
+          },
+          {
+            "name" : "dataInicio",
+            "in" : "path",
+            "required" : true,
+            "schema" : {
+              "type" : "string"
+            },
+            "description" : "- Data de início do período no formato AAAAMMDD"
+          },
+          {
+            "name" : "v",
+            "in" : "query",
+            "schema" : {
+              "type" : "integer",
+              "format" : "int32"
+            },
+            "description" : ""
+          }
+        ]
+      }
+    },
+    "\/dadosabertos/plenario/lista/votacao/{dataSessao}" : {
+      "get" : {
+        "tags" : [ "PlenarioService" ],
+        "description" : "Obtém a lista das votações da(s) sessão(ões) que ocorreram na data informada",
+        "operationId" : "listaVotacoesSessaoXml2",
+        "responses" : {
+          "200" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }, 
+              "application/xml" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }, 
+              "text/csv" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }
+            },
+            "description" : "Retorna a lista das votações da(s) sessão(ões)"
+          }
+        },
+        "parameters" : [
+          {
+            "name" : "dataSessao",
+            "in" : "path",
+            "required" : true,
+            "schema" : {
+              "type" : "string"
+            },
+            "description" : ""
+          },
+          {
+            "name" : "v",
+            "in" : "query",
+            "schema" : {
+              "type" : "integer",
+              "format" : "int32"
+            },
+            "description" : ""
+          }
+        ]
+      }
+    },
+    "\/dadosabertos/plenario/resultado/mes/{data}" : {
+      "get" : {
+        "tags" : [ "PlenarioService" ],
+        "description" : "Obtém o resultado do mês a partir da data informada",
+        "operationId" : "resultadoMesPlenarioXml",
+        "responses" : {
+          "200" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }, 
+              "application/xml" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }, 
+              "text/csv" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }
+            },
+            "description" : "Retorna o resultado do plenário no mês informado (a partir da data informada até o final do mês)"
+          }
+        },
+        "parameters" : [
+          {
+            "name" : "data",
+            "in" : "path",
+            "required" : true,
+            "schema" : {
+              "type" : "string"
+            },
+            "description" : "- Data início no formato AAAAMMDD"
+          },
+          {
+            "name" : "v",
+            "in" : "query",
+            "schema" : {
+              "type" : "integer",
+              "format" : "int32"
+            },
+            "description" : ""
+          }
+        ]
+      }
+    },
+    "\/dadosabertos/plenario/resultado/{data}" : {
+      "get" : {
+        "tags" : [ "PlenarioService" ],
+        "description" : "Obtém o resultado da sessão plenária",
+        "operationId" : "resultadoSessaoXml",
+        "responses" : {
+          "200" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }, 
+              "application/xml" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }, 
+              "text/csv" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }
+            },
+            "description" : "Retorna o resultado da sessão plenária na data informada"
+          }
+        },
+        "parameters" : [
+          {
+            "name" : "data",
+            "in" : "path",
+            "required" : true,
+            "schema" : {
+              "type" : "string"
+            },
+            "description" : "- Data da sessão no formato AAAAMMDD"
+          },
+          {
+            "name" : "v",
+            "in" : "query",
+            "schema" : {
+              "type" : "integer",
+              "format" : "int32"
+            },
+            "description" : ""
+          }
+        ]
+      }
+    },
+    "\/dadosabertos/plenario/tiposSessao" : {
+      "get" : {
+        "tags" : [ "PlenarioService" ],
+        "description" : "Lista os tipos de Sessão Plenária",
+        "operationId" : "listaTiposSessao",
+        "responses" : {
+          "200" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }, 
+              "application/xml" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }, 
+              "text/csv" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }
+            },
+            "description" : "Retorna a lista de tipos de Sessão Plenária"
+          }
+        },
+        "parameters" : [
+        ]
+      }
+    },
+    "\/dadosabertos/plenario/votacao/nominal/{ano}" : {
+      "get" : {
+        "tags" : [ "PlenarioService" ],
+        "description" : "Obtém a lista das votações nominais por ano. É obrigatório a informação do ano",
+        "operationId" : "listaVotacoesPorAno",
+        "responses" : {
+          "200" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }, 
+              "application/xml" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }, 
+              "text/csv" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }
+            },
+            "description" : "Retorna a lista das votações nominais no ano informado"
+          }
+        },
+        "parameters" : [
+          {
+            "name" : "ano",
+            "in" : "path",
+            "required" : true,
+            "schema" : {
+              "type" : "string"
+            },
+            "description" : "- Ano no formato AAAA"
+          }
+        ]
+      }
+    },
+    "\/dadosabertos/plenario/votacao/orientacaoBancada/{dataInicio}/{dataFim}" : {
+      "get" : {
+        "tags" : [ "PlenarioService" ],
+        "description" : "Obtém a Orientação de Bancada para votação de matérias da(s) sessão(ões) que ocorreram no período informado",
+        "operationId" : "listaOrientacaoBancadaPeriodoXml",
+        "responses" : {
+          "200" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }, 
+              "application/xml" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }, 
+              "text/csv" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }
+            },
+            "description" : "Retorna a lista das votações bem como orientações de bancada na data informada."
+          }
+        },
+        "parameters" : [
+          {
+            "name" : "dataFim",
+            "in" : "path",
+            "required" : true,
+            "schema" : {
+              "type" : "string"
+            },
+            "description" : "- Data de término do período no formato AAAAMMDD"
+          },
+          {
+            "name" : "dataInicio",
+            "in" : "path",
+            "required" : true,
+            "schema" : {
+              "type" : "string"
+            },
+            "description" : "- Data de início do período no formato AAAAMMDD"
+          }
+        ]
+      }
+    },
+    "\/dadosabertos/plenario/votacao/orientacaoBancada/{dataSessao}" : {
+      "get" : {
+        "tags" : [ "PlenarioService" ],
+        "description" : "Obtém a Orientação de Bancada para votação de matérias da(s) sessão(ões) que ocorreram na data informada",
+        "operationId" : "listaOrientacaoBancadaXml",
+        "responses" : {
+          "200" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }, 
+              "application/xml" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }, 
+              "text/csv" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }
+            },
+            "description" : "Retorna a lista das votações bem como orientações de bancada na data informada."
+          }
+        },
+        "parameters" : [
+          {
+            "name" : "dataSessao",
+            "in" : "path",
+            "required" : true,
+            "schema" : {
+              "type" : "string"
+            },
+            "description" : "- Data da sessão no formato AAAAMMDD"
+          }
+        ]
+      }
+    },
+    "\/dadosabertos/reuniaocomissao/notas/{codigoReuniao}" : {
+      "get" : {
+        "tags" : [ "ReuniaoComissaoService" ],
+        "description" : "Obtém dados sobre as notas taquigráficas da reunião",
+        "operationId" : "notasReuniaoXml",
+        "responses" : {
+          "200" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }, 
+              "application/xml" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }, 
+              "text/csv" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }
+            },
+            "description" : "Retorna informações sobre as notas taquigráficas da reunião"
+          }
+        },
+        "parameters" : [
+          {
+            "name" : "codigoReuniao",
+            "in" : "path",
+            "required" : true,
+            "schema" : {
+              "type" : "integer",
+              "format" : "int32"
+            },
+            "description" : "- Código da reunião"
+          },
+          {
+            "name" : "v",
+            "in" : "query",
+            "schema" : {
+              "type" : "integer",
+              "format" : "int32"
+            },
+            "description" : ""
+          }
+        ]
+      }
+    },
+    "\/dadosabertos/reuniaocomissao/pauta/item/{codigo}" : {
+      "get" : {
+        "tags" : [ "ReuniaoComissaoService" ],
+        "description" : "Obtém os dados de um item de pauta da reunião",
+        "operationId" : "itemPautaXml",
+        "responses" : {
+          "200" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }, 
+              "application/xml" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }, 
+              "text/csv" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }
+            },
+            "description" : "Retorna os dados do item de pauta"
+          }
+        },
+        "parameters" : [
+          {
+            "name" : "codigo",
+            "in" : "path",
+            "required" : true,
+            "schema" : {
+              "type" : "integer",
+              "format" : "int32"
+            },
+            "description" : "- Código do item de pauta"
+          },
+          {
+            "name" : "parlamentar",
+            "in" : "query",
+            "required" : true,
+            "schema" : {
+              "type" : "integer",
+              "format" : "int32"
+            },
+            "description" : "(opcional) - Código do parlamentar para mostrar sua participação"
+          },
+          {
+            "name" : "v",
+            "in" : "query",
+            "schema" : {
+              "type" : "integer",
+              "format" : "int32"
+            },
+            "description" : ""
+          }
+        ]
+      }
+    },
+    "\/dadosabertos/reuniaocomissao/{codigoReuniao}" : {
+      "get" : {
+        "tags" : [ "ReuniaoComissaoService" ],
+        "description" : "Obtém todos os dados da reunião de comissão, incluindo detalhes dos itens de pauta (autoria, relatoria, resultado,\netc.)",
+        "operationId" : "detalheReuniaoComissaoXml",
+        "responses" : {
+          "200" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }, 
+              "application/xml" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }, 
+              "text/csv" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }
+            },
+            "description" : "Retorna os dados da reunião com detalhes dos itens de pauta"
+          }
+        },
+        "parameters" : [
+          {
+            "name" : "codigoReuniao",
+            "in" : "path",
+            "required" : true,
+            "schema" : {
+              "type" : "integer",
+              "format" : "int32"
+            },
+            "description" : "- Código da reunião"
+          },
+          {
+            "name" : "v",
+            "in" : "query",
+            "schema" : {
+              "type" : "integer",
+              "format" : "int32"
+            },
+            "description" : ""
+          }
+        ]
+      }
+    },
+    "\/dadosabertos/reuniaocomissao/{sigla}/documento/{tipo}" : {
+      "get" : {
+        "tags" : [ "ReuniaoComissaoService" ],
+        "description" : "Obtém o link para um documento da última reunião de uma comissão",
+        "operationId" : "documento",
+        "responses" : {
+          "200" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }, 
+              "application/xml" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }
+            },
+            "description" : "Retorna o link para o documento, através do status HTTP \"Temporary Redirect\" (307), se o documento não\nexistir retorna HTTP \"Not Found\" (404)"
+          }
+        },
+        "parameters" : [
+          {
+            "name" : "sigla",
+            "in" : "path",
+            "required" : true,
+            "schema" : {
+              "type" : "string"
+            },
+            "description" : "- Sigla da comissão (em maiúsculo)"
+          },
+          {
+            "name" : "tipo",
+            "in" : "path",
+            "required" : true,
+            "schema" : {
+              "type" : "string"
+            },
+            "description" : "- Tipo do documento (pauta, pautacheia ou resultado)"
+          }
+        ]
+      }
+    },
+    "\/dadosabertos/senador/lista/afastados" : {
+      "get" : {
+        "tags" : [ "ListaSenadorService" ],
+        "description" : "Obtém a lista dos Senadores atualmente afastados",
+        "operationId" : "listaSenadoresAfastadosXml",
+        "responses" : {
+          "200" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }, 
+              "application/xml" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }, 
+              "text/csv" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }
+            },
+            "description" : "Retorna a lista dos senadores atualmente afastados"
+          }
+        },
+        "parameters" : [
+        ]
+      }
+    },
+    "\/dadosabertos/senador/lista/atual" : {
+      "get" : {
+        "tags" : [ "ListaSenadorService" ],
+        "description" : "Obtém a lista de Senadores em Exercício",
+        "operationId" : "listaSenadoresXml",
+        "responses" : {
+          "200" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }, 
+              "application/xml" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }, 
+              "text/csv" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }
+            },
+            "description" : "Retorna a lista de Senadores em Exercício"
+          }
+        },
+        "parameters" : [
+          {
+            "name" : "participacao",
+            "in" : "query",
+            "schema" : {
+              "type" : "string"
+            },
+            "description" : "(opcional) - Tipo de participação: \"T\" (titular) / \"S\" (suplente) - só funciona a partir da\nversão 4"
+          },
+          {
+            "name" : "uf",
+            "in" : "query",
+            "schema" : {
+              "type" : "string"
+            },
+            "description" : "(opcional) - Sigla da UF do mandato - só funciona a partir da versão 4"
+          },
+          {
+            "name" : "v",
+            "in" : "query",
+            "schema" : {
+              "type" : "integer",
+              "format" : "int32"
+            },
+            "description" : "(opcional) - Versão do serviço"
+          }
+        ]
+      }
+    },
+    "\/dadosabertos/senador/lista/legislatura/{legislaturaInicio}/{legislaturaFim}" : {
+      "get" : {
+        "tags" : [ "ListaSenadorService" ],
+        "description" : "Obtém a lista de Senadores de um intervalo de Legislaturas",
+        "operationId" : "listaSenadoresLegislaturaInicioFimXml",
+        "responses" : {
+          "200" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }, 
+              "application/xml" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }, 
+              "text/csv" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }
+            },
+            "description" : "Retorna a lista de Senadores das Legislaturas informadas"
+          }
+        },
+        "parameters" : [
+          {
+            "name" : "legislaturaFim",
+            "in" : "path",
+            "required" : true,
+            "schema" : {
+              "type" : "integer",
+              "format" : "int32"
+            },
+            "description" : ""
+          },
+          {
+            "name" : "legislaturaInicio",
+            "in" : "path",
+            "required" : true,
+            "schema" : {
+              "type" : "integer",
+              "format" : "int32"
+            },
+            "description" : ""
+          },
+          {
+            "name" : "exercicio",
+            "in" : "query",
+            "schema" : {
+              "type" : "string"
+            },
+            "description" : ""
+          },
+          {
+            "name" : "participacao",
+            "in" : "query",
+            "schema" : {
+              "type" : "string"
+            },
+            "description" : "(opcional) - Tipo de participação: T (titular) / S (suplente)"
+          },
+          {
+            "name" : "uf",
+            "in" : "query",
+            "schema" : {
+              "type" : "string"
+            },
+            "description" : "(opcional) - Sigla da UF do mandato"
+          },
+          {
+            "name" : "v",
+            "in" : "query",
+            "schema" : {
+              "type" : "integer",
+              "format" : "int32"
+            },
+            "description" : "(opcional) - Versão do serviço"
+          }
+        ]
+      }
+    },
+    "\/dadosabertos/senador/lista/legislatura/{legislatura}" : {
+      "get" : {
+        "tags" : [ "ListaSenadorService" ],
+        "description" : "Obtém a lista de Senadores de uma Legislatura",
+        "operationId" : "listaSenadoresLegislaturaXml",
+        "responses" : {
+          "200" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }, 
+              "application/xml" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }, 
+              "text/csv" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }
+            },
+            "description" : "Retorna a lista de Senadores da Legislatura informada"
+          }
+        },
+        "parameters" : [
+          {
+            "name" : "legislatura",
+            "in" : "path",
+            "required" : true,
+            "schema" : {
+              "type" : "integer",
+              "format" : "int32"
+            },
+            "description" : "- Número da Legislatura"
+          },
+          {
+            "name" : "exercicio",
+            "in" : "query",
+            "schema" : {
+              "type" : "string"
+            },
+            "description" : "(opcional) - Filtrar apenas parlamentares que entraram em exercício \"S\" (sim) ou apenas os que não\nentraram \"N\" (não)"
+          },
+          {
+            "name" : "participacao",
+            "in" : "query",
+            "schema" : {
+              "type" : "string"
+            },
+            "description" : "(opcional) - Tipo de participação: \"T\" (titular) / \"S\" (suplente)"
+          },
+          {
+            "name" : "uf",
+            "in" : "query",
+            "schema" : {
+              "type" : "string"
+            },
+            "description" : "(opcional) - Sigla da UF do mandato"
+          },
+          {
+            "name" : "v",
+            "in" : "query",
+            "schema" : {
+              "type" : "integer",
+              "format" : "int32"
+            },
+            "description" : "(opcional) - Versão do serviço"
+          }
+        ]
+      }
+    },
+    "\/dadosabertos/senador/lista/tiposUsoPalavra" : {
+      "get" : {
+        "tags" : [ "ListaSenadorService" ],
+        "description" : "Lista os tipos de Uso da Palavra",
+        "operationId" : "listaTiposUsoPalavraXml",
+        "responses" : {
+          "200" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }, 
+              "application/xml" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }, 
+              "text/csv" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }
+            },
+            "description" : "Retorna a lista de tipos de Uso da Palavra"
+          }
+        },
+        "parameters" : [
+        ]
+      }
+    },
+    "\/dadosabertos/senador/partidos" : {
+      "get" : {
+        "tags" : [ "ListaSenadorService" ],
+        "description" : "Lista os Partidos Políticos",
+        "operationId" : "listaPartidosXml",
+        "responses" : {
+          "200" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }, 
+              "application/xml" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }, 
+              "text/csv" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }
+            },
+            "description" : "Retorna a lista de Partidos Políticos"
+          }
+        },
+        "parameters" : [
+        ]
+      }
+    },
+    "\/dadosabertos/senador/{codigo}" : {
+      "get" : {
+        "tags" : [ "ListaSenadorService" ],
+        "description" : "Obtém os detalhes do senador",
+        "operationId" : "detalheSenadorXml",
+        "responses" : {
+          "200" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }, 
+              "application/xml" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }, 
+              "text/csv" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }
+            },
+            "description" : "Retorna os detalhes de um senador"
+          }
+        },
+        "parameters" : [
+          {
+            "name" : "codigo",
+            "in" : "path",
+            "required" : true,
+            "schema" : {
+              "type" : "integer",
+              "format" : "int32"
+            },
+            "description" : "- Código do senador"
+          },
+          {
+            "name" : "v",
+            "in" : "query",
+            "schema" : {
+              "type" : "integer",
+              "format" : "int32"
+            },
+            "description" : "(opcional) - Versão do serviço"
+          }
+        ]
+      }
+    },
+    "\/dadosabertos/senador/{codigo}/apartes" : {
+      "get" : {
+        "tags" : [ "ListaSenadorService" ],
+        "description" : "Obtém a relação de apartes do Senador",
+        "operationId" : "apartesSenadorXml",
+        "responses" : {
+          "200" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }, 
+              "application/xml" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }, 
+              "text/csv" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }
+            },
+            "description" : "Retorna a relação de apartes do Senador"
+          }
+        },
+        "parameters" : [
+          {
+            "name" : "codigo",
+            "in" : "path",
+            "required" : true,
+            "schema" : {
+              "type" : "integer",
+              "format" : "int32"
+            },
+            "description" : "- Código do Senador"
+          },
+          {
+            "name" : "casa",
+            "in" : "query",
+            "schema" : {
+              "type" : "string"
+            },
+            "description" : "(opcional) - Sigla da casa aonde ocorre o pronunciamento - SF (Senado), CD (Câmara), CN (Congresso), PR\n(Presidência), CR (Comissão Representativa do Congresso), AC (Assembléia Constituinte)"
+          },
+          {
+            "name" : "dataFim",
+            "in" : "query",
+            "schema" : {
+              "type" : "string"
+            },
+            "description" : "(opcional) - Data de fim do período da pesquisa no formato AAAAMMDD"
+          },
+          {
+            "name" : "dataInicio",
+            "in" : "query",
+            "schema" : {
+              "type" : "string"
+            },
+            "description" : "(opcional) - Data de início do período da pesquisa no formato AAAAMMDD"
+          },
+          {
+            "name" : "numeroSessao",
+            "in" : "query",
+            "schema" : {
+              "type" : "integer",
+              "format" : "int32"
+            },
+            "description" : "(opcional) - Número da sessão plenária"
+          },
+          {
+            "name" : "tipoSessao",
+            "in" : "query",
+            "schema" : {
+              "type" : "string"
+            },
+            "description" : "(opcional) - Tipo da sessão plenária (veja serviço que lista os tipos de sessão)"
+          },
+          {
+            "name" : "v",
+            "in" : "query",
+            "schema" : {
+              "type" : "integer",
+              "format" : "int32"
+            },
+            "description" : "(opcional) - Versão do serviço"
+          }
+        ]
+      }
+    },
+    "\/dadosabertos/senador/{codigo}/autorias" : {
+      "get" : {
+        "tags" : [ "ListaSenadorService" ],
+        "description" : "Obtém as matérias de autoria de um Senador",
+        "operationId" : "autoriasSenadorXml",
+        "responses" : {
+          "200" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }, 
+              "application/xml" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }, 
+              "text/csv" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }
+            },
+            "description" : "Retorna as matérias de autoria do Senador."
+          }
+        },
+        "parameters" : [
+          {
+            "name" : "codigo",
+            "in" : "path",
+            "required" : true,
+            "schema" : {
+              "type" : "integer",
+              "format" : "int32"
+            },
+            "description" : "- Código do Senador"
+          },
+          {
+            "name" : "ano",
+            "in" : "query",
+            "required" : true,
+            "schema" : {
+              "type" : "integer",
+              "format" : "int32"
+            },
+            "description" : "(opcional) - Ano da matéria - retorna apenas as matérias do ano informado"
+          },
+          {
+            "name" : "numero",
+            "in" : "query",
+            "schema" : {
+              "type" : "string"
+            },
+            "description" : "(opcional) - Número da matéria - retorna apenas as matérias do número informado."
+          },
+          {
+            "name" : "primeiro",
+            "in" : "query",
+            "schema" : {
+              "type" : "string"
+            },
+            "description" : "(opcional) (S ou N) - retorna apenas as matérias cujo senador é o primeiro autor, ou seja, o autor\nprincipal (S) ou apenas as que o senador é coautor (N)."
+          },
+          {
+            "name" : "sigla",
+            "in" : "query",
+            "schema" : {
+              "type" : "string"
+            },
+            "description" : "(opcional) - Sigla da matéria - retorna apenas as matérias da sigla informada."
+          },
+          {
+            "name" : "tramitando",
+            "in" : "query",
+            "schema" : {
+              "type" : "string"
+            },
+            "description" : "(opcional) (S ou N) - retorna apenas as matérias que estão tramitando (S) ou apenas as que não\nestão (N)."
+          },
+          {
+            "name" : "v",
+            "in" : "query",
+            "schema" : {
+              "type" : "integer",
+              "format" : "int32"
+            },
+            "description" : "(opcional) - Versão do serviço"
+          }
+        ]
+      }
+    },
+    "\/dadosabertos/senador/{codigo}/cargos" : {
+      "get" : {
+        "tags" : [ "ListaSenadorService" ],
+        "description" : "Obtém a relação de cargos que o senador já ocupou",
+        "operationId" : "cargosSenadorXml",
+        "responses" : {
+          "200" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }, 
+              "application/xml" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }, 
+              "text/csv" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }
+            },
+            "description" : "Retorna a relação de cargos do Senador"
+          }
+        },
+        "parameters" : [
+          {
+            "name" : "codigo",
+            "in" : "path",
+            "required" : true,
+            "schema" : {
+              "type" : "integer",
+              "format" : "int32"
+            },
+            "description" : "- Código do senador"
+          },
+          {
+            "name" : "comissao",
+            "in" : "query",
+            "schema" : {
+              "type" : "string"
+            },
+            "description" : "(opcional) - Sigla da comissão - retorna apenas os cargos na comissão informada."
+          },
+          {
+            "name" : "indAtivos",
+            "in" : "query",
+            "schema" : {
+              "type" : "string"
+            },
+            "description" : "(opcional) - Se \"S\" retorna apenas os cargos atuais, se \"N\" retorna apenas os já finalizados"
+          },
+          {
+            "name" : "v",
+            "in" : "query",
+            "schema" : {
+              "type" : "integer",
+              "format" : "int32"
+            },
+            "description" : "(opcional) - Versão do serviço"
+          }
+        ]
+      }
+    },
+    "\/dadosabertos/senador/{codigo}/comissoes" : {
+      "get" : {
+        "tags" : [ "ListaSenadorService" ],
+        "description" : "Obtém as comissões de que um Senador é membro",
+        "operationId" : "comissoesSenadorXml",
+        "responses" : {
+          "200" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }, 
+              "application/xml" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }, 
+              "text/csv" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }
+            },
+            "description" : "Retorna a relação de comissões das quais um Senador é membro"
+          }
+        },
+        "parameters" : [
+          {
+            "name" : "codigo",
+            "in" : "path",
+            "required" : true,
+            "schema" : {
+              "type" : "integer",
+              "format" : "int32"
+            },
+            "description" : "- Código do Senador"
+          },
+          {
+            "name" : "comissao",
+            "in" : "query",
+            "schema" : {
+              "type" : "string"
+            },
+            "description" : "(opcional) - Sigla da comissão - retorna apenas a comissão informada."
+          },
+          {
+            "name" : "indAtivos",
+            "in" : "query",
+            "schema" : {
+              "type" : "string"
+            },
+            "description" : "(opcional) - Se \"S\" retorna apenas as comissões atuais, se \"N\" retorna apenas as já finalizadas"
+          },
+          {
+            "name" : "v",
+            "in" : "query",
+            "schema" : {
+              "type" : "integer",
+              "format" : "int32"
+            },
+            "description" : "(opcional) - Versão do serviço"
+          }
+        ]
+      }
+    },
+    "\/dadosabertos/senador/{codigo}/discursos" : {
+      "get" : {
+        "tags" : [ "ListaSenadorService" ],
+        "description" : "Obtém a relação de discursos do Senador. Se não informar o período, são retornados os discursos dos últimos 30\ndias.",
+        "operationId" : "discursosSenadorXml",
+        "responses" : {
+          "200" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }, 
+              "application/xml" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }, 
+              "text/csv" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }
+            },
+            "description" : "Retorna a relação de discursos do Senador proferidos no período máximo de 1 ano."
+          }
+        },
+        "parameters" : [
+          {
+            "name" : "codigo",
+            "in" : "path",
+            "required" : true,
+            "schema" : {
+              "type" : "integer",
+              "format" : "int32"
+            },
+            "description" : "Código do Senador"
+          },
+          {
+            "name" : "casa",
+            "in" : "query",
+            "schema" : {
+              "type" : "string"
+            },
+            "description" : "(opcional) - Sigla da casa aonde ocorre o pronunciamento - SF (Senado), CD (Câmara), CN (Congresso), PR\n(Presidência), CR (Comissão Representativa do Congresso), AC (Assembléia Constituinte)"
+          },
+          {
+            "name" : "dataFim",
+            "in" : "query",
+            "schema" : {
+              "type" : "string"
+            },
+            "description" : "(opcional) - Data de fim do período da pesquisa no formato AAAAMMDD. Se não for informada, dataFim =\ndata atual"
+          },
+          {
+            "name" : "dataInicio",
+            "in" : "query",
+            "schema" : {
+              "type" : "string"
+            },
+            "description" : "(opcional) - Data de início do período da pesquisa no formato AAAAMMDD. Se não for informada,\ndataInicio = data atual - 1 mês"
+          },
+          {
+            "name" : "numeroSessao",
+            "in" : "query",
+            "schema" : {
+              "type" : "integer",
+              "format" : "int32"
+            },
+            "description" : "(opcional) - Número da sessão plenária"
+          },
+          {
+            "name" : "tipoSessao",
+            "in" : "query",
+            "schema" : {
+              "type" : "string"
+            },
+            "description" : "(opcional) - Tipo da sessão plenária (veja serviço que lista os tipos de sessão)"
+          },
+          {
+            "name" : "v",
+            "in" : "query",
+            "schema" : {
+              "type" : "integer",
+              "format" : "int32"
+            },
+            "description" : "(opcional) - Versão do serviço"
+          }
+        ]
+      }
+    },
+    "\/dadosabertos/senador/{codigo}/filiacoes" : {
+      "get" : {
+        "tags" : [ "ListaSenadorService" ],
+        "description" : "Obtém as filiações partidárias que o Senador já teve",
+        "operationId" : "filiacoesSenadorXml",
+        "responses" : {
+          "200" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }, 
+              "application/xml" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }, 
+              "text/csv" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }
+            },
+            "description" : "Retorna a relação de filiações do Senador"
+          }
+        },
+        "parameters" : [
+          {
+            "name" : "codigo",
+            "in" : "path",
+            "required" : true,
+            "schema" : {
+              "type" : "integer",
+              "format" : "int32"
+            },
+            "description" : "- Código do senador"
+          },
+          {
+            "name" : "v",
+            "in" : "query",
+            "schema" : {
+              "type" : "integer",
+              "format" : "int32"
+            },
+            "description" : "(opcional) - Versão do serviço"
+          }
+        ]
+      }
+    },
+    "\/dadosabertos/senador/{codigo}/historico" : {
+      "get" : {
+        "tags" : [ "ListaSenadorService" ],
+        "description" : "Obtém todos os detalhes de um parlamentar no(s) mandato(s) como Senador (mandato atual e anteriores, se houver)",
+        "operationId" : "historicoSenadorXml",
+        "responses" : {
+          "200" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }, 
+              "application/xml" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }, 
+              "text/csv" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }
+            },
+            "description" : "Retorna os detalhes do parlamentar no(s) mandato(s) como Senador"
+          }
+        },
+        "parameters" : [
+          {
+            "name" : "codigo",
+            "in" : "path",
+            "required" : true,
+            "schema" : {
+              "type" : "integer",
+              "format" : "int32"
+            },
+            "description" : "- Código do Senador"
+          },
+          {
+            "name" : "v",
+            "in" : "query",
+            "schema" : {
+              "type" : "integer",
+              "format" : "int32"
+            },
+            "description" : "(opcional) - Versão do serviço"
+          }
+        ]
+      }
+    },
+    "\/dadosabertos/senador/{codigo}/historicoAcademico" : {
+      "get" : {
+        "tags" : [ "ListaSenadorService" ],
+        "description" : "Obtém o histórico acadêmico de um Senador",
+        "operationId" : "historicoAcademicoSenadorXml",
+        "responses" : {
+          "200" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }, 
+              "application/xml" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }, 
+              "text/csv" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }
+            },
+            "description" : "Retorna a relação de cursos feitos pelo Senador"
+          }
+        },
+        "parameters" : [
+          {
+            "name" : "codigo",
+            "in" : "path",
+            "required" : true,
+            "schema" : {
+              "type" : "integer",
+              "format" : "int32"
+            },
+            "description" : "- Código do Senador"
+          },
+          {
+            "name" : "v",
+            "in" : "query",
+            "schema" : {
+              "type" : "integer",
+              "format" : "int32"
+            },
+            "description" : "(opcional) - Versão do serviço"
+          }
+        ]
+      }
+    },
+    "\/dadosabertos/senador/{codigo}/licencas" : {
+      "get" : {
+        "tags" : [ "ListaSenadorService" ],
+        "description" : "Obtém as licenças de um Senador",
+        "operationId" : "licencasSenadorXml",
+        "responses" : {
+          "200" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }, 
+              "application/xml" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }, 
+              "text/csv" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }
+            },
+            "description" : "Retorna a relação de licenças do Senador"
+          }
+        },
+        "parameters" : [
+          {
+            "name" : "codigo",
+            "in" : "path",
+            "required" : true,
+            "schema" : {
+              "type" : "integer",
+              "format" : "int32"
+            },
+            "description" : "- Código do Senador"
+          },
+          {
+            "name" : "dataInicio",
+            "in" : "query",
+            "schema" : {
+              "type" : "string"
+            },
+            "description" : ""
+          },
+          {
+            "name" : "v",
+            "in" : "query",
+            "schema" : {
+              "type" : "integer",
+              "format" : "int32"
+            },
+            "description" : "(opcional) - Versão do serviço"
+          }
+        ]
+      }
+    },
+    "\/dadosabertos/senador/{codigo}/liderancas" : {
+      "get" : {
+        "tags" : [ "ListaSenadorService" ],
+        "description" : "Obtém os cargos de liderança de um Senador",
+        "operationId" : "liderancasSenadorXml",
+        "responses" : {
+          "200" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }, 
+              "application/xml" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }, 
+              "text/csv" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }
+            },
+            "description" : "Retorna a relação de cargos de liderança do Senador"
+          }
+        },
+        "parameters" : [
+          {
+            "name" : "codigo",
+            "in" : "path",
+            "required" : true,
+            "schema" : {
+              "type" : "integer",
+              "format" : "int32"
+            },
+            "description" : "- Código do Senador"
+          },
+          {
+            "name" : "v",
+            "in" : "query",
+            "schema" : {
+              "type" : "integer",
+              "format" : "int32"
+            },
+            "description" : "(opcional) - Versão do serviço"
+          }
+        ]
+      }
+    },
+    "\/dadosabertos/senador/{codigo}/mandatos" : {
+      "get" : {
+        "tags" : [ "ListaSenadorService" ],
+        "description" : "Obtém os mandatos que o Senador já teve",
+        "operationId" : "mandatosSenadorXml",
+        "responses" : {
+          "200" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }, 
+              "application/xml" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }, 
+              "text/csv" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }
+            },
+            "description" : "Retorna a relação de mandatos do Senador"
+          }
+        },
+        "parameters" : [
+          {
+            "name" : "codigo",
+            "in" : "path",
+            "required" : true,
+            "schema" : {
+              "type" : "integer",
+              "format" : "int32"
+            },
+            "description" : "- Código do Senador"
+          },
+          {
+            "name" : "v",
+            "in" : "query",
+            "schema" : {
+              "type" : "integer",
+              "format" : "int32"
+            },
+            "description" : "(opcional) - Versão do serviço"
+          }
+        ]
+      }
+    },
+    "\/dadosabertos/senador/{codigo}/profissao" : {
+      "get" : {
+        "tags" : [ "ListaSenadorService" ],
+        "description" : "Obtém a(s) profissão(ões) de um Senador",
+        "operationId" : "profissaoSenadorXml",
+        "responses" : {
+          "200" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }, 
+              "application/xml" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }, 
+              "text/csv" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }
+            },
+            "description" : "Retorna a relação de profissões do Senador"
+          }
+        },
+        "parameters" : [
+          {
+            "name" : "codigo",
+            "in" : "path",
+            "required" : true,
+            "schema" : {
+              "type" : "integer",
+              "format" : "int32"
+            },
+            "description" : "- Código do Senador"
+          },
+          {
+            "name" : "v",
+            "in" : "query",
+            "schema" : {
+              "type" : "integer",
+              "format" : "int32"
+            },
+            "description" : "(opcional) - Versão do serviço"
+          }
+        ]
+      }
+    },
+    "\/dadosabertos/senador/{codigo}/relatorias" : {
+      "get" : {
+        "tags" : [ "ListaSenadorService" ],
+        "description" : "Obtém as matérias de relatoria de um Senador",
+        "operationId" : "relatoriasSenadorXml",
+        "responses" : {
+          "200" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }, 
+              "application/xml" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }, 
+              "text/csv" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }
+            },
+            "description" : "Retorna a relação de matérias de relatoria do Senador"
+          }
+        },
+        "parameters" : [
+          {
+            "name" : "codigo",
+            "in" : "path",
+            "required" : true,
+            "schema" : {
+              "type" : "integer",
+              "format" : "int32"
+            },
+            "description" : "- Código do Senador"
+          },
+          {
+            "name" : "ano",
+            "in" : "query",
+            "required" : true,
+            "schema" : {
+              "type" : "integer",
+              "format" : "int32"
+            },
+            "description" : "(opcional) - Ano da matéria - retorna apenas as matérias do ano informado"
+          },
+          {
+            "name" : "comissao",
+            "in" : "query",
+            "schema" : {
+              "type" : "string"
+            },
+            "description" : "(opcional) - Sigla da comissão - retorna apenas as relatorias da comissão informada."
+          },
+          {
+            "name" : "numero",
+            "in" : "query",
+            "schema" : {
+              "type" : "string"
+            },
+            "description" : "(opcional) - Número da matéria - retorna apenas as matérias do número informado."
+          },
+          {
+            "name" : "sigla",
+            "in" : "query",
+            "schema" : {
+              "type" : "string"
+            },
+            "description" : "(opcional) - Sigla da matéria - retorna apenas as matérias da sigla informada."
+          },
+          {
+            "name" : "tramitando",
+            "in" : "query",
+            "schema" : {
+              "type" : "string"
+            },
+            "description" : "(opcional) (S ou N) - retorna apenas as matérias que estão tramitando (S) ou apenas as que não\nestão (N). Se não for informado, retorna ambas."
+          },
+          {
+            "name" : "v",
+            "in" : "query",
+            "schema" : {
+              "type" : "integer",
+              "format" : "int32"
+            },
+            "description" : "(opcional) - Versão do serviço"
+          }
+        ]
+      }
+    },
+    "\/dadosabertos/senador/{codigo}/votacoes" : {
+      "get" : {
+        "tags" : [ "ListaSenadorService" ],
+        "description" : "Obtém as votações de um Senador",
+        "operationId" : "votacoessSenadorXml",
+        "responses" : {
+          "200" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }, 
+              "application/xml" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }, 
+              "text/csv" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }
+            },
+            "description" : "Retorna as votações de um Senador"
+          }
+        },
+        "parameters" : [
+          {
+            "name" : "codigo",
+            "in" : "path",
+            "required" : true,
+            "schema" : {
+              "type" : "integer",
+              "format" : "int32"
+            },
+            "description" : "- Código do Senador"
+          },
+          {
+            "name" : "ano",
+            "in" : "query",
+            "schema" : {
+              "type" : "string"
+            },
+            "description" : "(opcional) - Ano da matéria - retorna apenas as matérias do ano informado"
+          },
+          {
+            "name" : "numero",
+            "in" : "query",
+            "schema" : {
+              "type" : "string"
+            },
+            "description" : "(opcional) - Número da matéria - retorna apenas as matérias do número informado."
+          },
+          {
+            "name" : "sigla",
+            "in" : "query",
+            "schema" : {
+              "type" : "string"
+            },
+            "description" : "(opcional) - Sigla da matéria - retorna apenas as matérias da sigla informada."
+          },
+          {
+            "name" : "tramitando",
+            "in" : "query",
+            "schema" : {
+              "type" : "string"
+            },
+            "description" : "(opcional) (S ou N) - retorna apenas as matérias que estão tramitando (S) ou apenas as que não\nestão (N). Se não for informado, retorna ambas."
+          },
+          {
+            "name" : "v",
+            "in" : "query",
+            "schema" : {
+              "type" : "integer",
+              "format" : "int32"
+            },
+            "description" : "(opcional) - Versão do serviço"
+          }
+        ]
+      }
+    },
+    "\/dadosabertos/taquigrafia/notas/reuniao/{idReuniao}" : {
+      "get" : {
+        "tags" : [ "TaquigrafiaService" ],
+        "description" : "Notas Taquigráficas de Reuniões de Comissão e/ou outros Colegiados. Recupera os dados estruturados das notas\ntaquigráficas da Reunião.",
+        "operationId" : "obterXmlNotasTaquigraficasReuniao",
+        "responses" : {
+          "200" : {
+            "content" : {
+              "application/xml" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }
+            },
+            "description" : "Retorna as notas taquigráficas do Encontro Legislativo."
+          }
+        },
+        "parameters" : [
+          {
+            "name" : "idReuniao",
+            "in" : "path",
+            "required" : true,
+            "schema" : {
+              "type" : "integer",
+              "format" : "int64"
+            },
+            "description" : "Código da Reunião (Reunião de Comissão ou outro colegiado)"
+          }
+        ]
+      }
+    },
+    "\/dadosabertos/taquigrafia/notas/sessao/{idSessao}" : {
+      "get" : {
+        "tags" : [ "TaquigrafiaService" ],
+        "description" : "Notas Taquigráficas de Sessões Plenárias. Recupera os dados estruturados das notas taquigráficas da Sessão.",
+        "operationId" : "obterXmlNotasTaquigraficasSessao",
+        "responses" : {
+          "200" : {
+            "content" : {
+              "application/xml" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }
+            },
+            "description" : "Retorna as notas taquigráficas do Encontro Legislativo."
+          }
+        },
+        "parameters" : [
+          {
+            "name" : "idSessao",
+            "in" : "path",
+            "required" : true,
+            "schema" : {
+              "type" : "integer",
+              "format" : "int64"
+            },
+            "description" : "Código do Encontro Legislativo (Sessão Plenária)"
+          }
+        ]
+      }
+    },
+    "\/dadosabertos/taquigrafia/videos/reuniao/{idReuniao}" : {
+      "get" : {
+        "tags" : [ "TaquigrafiaService" ],
+        "description" : "Unidades Descritivas (vídeos) de Reuniões de Comissão e/ou outros Colegiados. Recupera as falas dos parlamentares\nao longo da Reunião, associadas aos trechos de vídeos que ocorreram.",
+        "operationId" : "obterMultimidiaReuniao",
+        "responses" : {
+          "200" : {
+            "content" : {
+              "application/json" : {
+                "examples" : {
+                  "example" : {
+                    "value" : "[ {\n  \"codigo\" : 12345,\n  \"horaExibicao\" : \"...\",\n  \"dataUnidade\" : \"...\",\n  \"descricao\" : \"...\",\n  \"nomeOrador\" : \"...\",\n  \"descricaoOrador\" : \"...\",\n  \"duracaoVideo\" : \"...\",\n  \"duracaoAudio\" : \"...\",\n  \"enderecoThumbnail\" : \"...\",\n  \"enderecoVideo\" : \"...\",\n  \"enderecoAudio\" : \"...\"\n} ]"
+                  }
+                },
+                "schema" : {
+"description" : "",
+"type" : "array",
+"items" : {
+  "$ref" : "#/components/schemas/UnidadeDescricaoDto"
+}
+                }
+              }, 
+              "application/xml" : {
+                "examples" : {
+                  "example" : {
+                    "value" : "<list>\n  <unidade>\n    <codigo>...<\/codigo>\n    <horaExibicao>...<\/horaExibicao>\n    <dataUnidade>...<\/dataUnidade>\n    <descricao>...<\/descricao>\n    <nomeOrador>...<\/nomeOrador>\n    <descricaoOrador>...<\/descricaoOrador>\n    <duracaoVideo>...<\/duracaoVideo>\n    <duracaoAudio>...<\/duracaoAudio>\n    <enderecoThumbnail>...<\/enderecoThumbnail>\n    <enderecoVideo>...<\/enderecoVideo>\n    <enderecoAudio>...<\/enderecoAudio>\n  <\/unidade>\n<\/list>\n"
+                  }
+                },
+                "schema" : {
+"description" : "",
+"type" : "array",
+"items" : {
+  "$ref" : "#/components/schemas/xml_ns0_unidadeDescricaoDto"
+}
+                }
+              }
+            },
+            "description" : "Retorna os trechos de vídeos das falas da Reunião."
+          }
+        },
+        "parameters" : [
+          {
+            "name" : "idReuniao",
+            "in" : "path",
+            "required" : true,
+            "schema" : {
+              "type" : "integer",
+              "format" : "int64"
+            },
+            "description" : "Código da Reunião (Reunião de Comissão ou outro colegiado)"
+          }
+        ]
+      }
+    },
+    "\/dadosabertos/taquigrafia/videos/sessao/{idSessao}" : {
+      "get" : {
+        "tags" : [ "TaquigrafiaService" ],
+        "description" : "Unidades Descritivas (vídeos) de Sessões Plenárias. Recupera as falas dos parlamentares ao longo da Sessão,\nassociadas aos trechos de vídeos que ocorreram.",
+        "operationId" : "obterMultimidiaSessao",
+        "responses" : {
+          "200" : {
+            "content" : {
+              "application/json" : {
+                "examples" : {
+                  "example" : {
+                    "value" : "[ {\n  \"codigo\" : 12345,\n  \"horaExibicao\" : \"...\",\n  \"dataUnidade\" : \"...\",\n  \"descricao\" : \"...\",\n  \"nomeOrador\" : \"...\",\n  \"descricaoOrador\" : \"...\",\n  \"duracaoVideo\" : \"...\",\n  \"duracaoAudio\" : \"...\",\n  \"enderecoThumbnail\" : \"...\",\n  \"enderecoVideo\" : \"...\",\n  \"enderecoAudio\" : \"...\"\n} ]"
+                  }
+                },
+                "schema" : {
+"description" : "",
+"type" : "array",
+"items" : {
+  "$ref" : "#/components/schemas/UnidadeDescricaoDto"
+}
+                }
+              }, 
+              "application/xml" : {
+                "examples" : {
+                  "example" : {
+                    "value" : "<list>\n  <unidade>\n    <codigo>...<\/codigo>\n    <horaExibicao>...<\/horaExibicao>\n    <dataUnidade>...<\/dataUnidade>\n    <descricao>...<\/descricao>\n    <nomeOrador>...<\/nomeOrador>\n    <descricaoOrador>...<\/descricaoOrador>\n    <duracaoVideo>...<\/duracaoVideo>\n    <duracaoAudio>...<\/duracaoAudio>\n    <enderecoThumbnail>...<\/enderecoThumbnail>\n    <enderecoVideo>...<\/enderecoVideo>\n    <enderecoAudio>...<\/enderecoAudio>\n  <\/unidade>\n<\/list>\n"
+                  }
+                },
+                "schema" : {
+"description" : "",
+"type" : "array",
+"items" : {
+  "$ref" : "#/components/schemas/xml_ns0_unidadeDescricaoDto"
+}
+                }
+              }
+            },
+            "description" : "Retorna os trechos de vídeos das falas da Sessão."
+          }
+        },
+        "parameters" : [
+          {
+            "name" : "idSessao",
+            "in" : "path",
+            "required" : true,
+            "schema" : {
+              "type" : "integer",
+              "format" : "int64"
+            },
+            "description" : "Código da Sessão Plenária"
+          }
+        ]
+      }
+    },
+    "\/dadosabertos/votacaoComissao/comissao/{siglaComissao}" : {
+      "get" : {
+        "tags" : [ "VotacaoComissaoService" ],
+        "description" : "Obtém as votações em comissões por comissão",
+        "operationId" : "votacaoComissaoPorComissaoXml",
+        "responses" : {
+          "200" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }, 
+              "application/xml" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }, 
+              "text/csv" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }
+            },
+            "description" : "Retorna as votações na comissão informada"
+          }
+        },
+        "parameters" : [
+          {
+            "name" : "siglaComissao",
+            "in" : "path",
+            "required" : true,
+            "schema" : {
+              "type" : "string"
+            },
+            "description" : "- Sigla da comissão"
+          },
+          {
+            "name" : "dataFim",
+            "in" : "query",
+            "schema" : {
+              "type" : "string"
+            },
+            "description" : "(opcional) - Data de fim para pesquisa no formato AAAAMMDD"
+          },
+          {
+            "name" : "dataInicio",
+            "in" : "query",
+            "schema" : {
+              "type" : "string"
+            },
+            "description" : "(opcional) - Data de início para pesquisa no formato AAAAMMDD"
+          },
+          {
+            "name" : "v",
+            "in" : "query",
+            "schema" : {
+              "type" : "integer",
+              "format" : "int32"
+            },
+            "description" : ""
+          }
+        ]
+      }
+    },
+    "\/dadosabertos/votacaoComissao/materia/{sigla}/{numero}/{ano}" : {
+      "get" : {
+        "tags" : [ "VotacaoComissaoService" ],
+        "description" : "Obtém as votações em comissões por identificação da matéria",
+        "operationId" : "votacaoComissaoPorMateriaXml",
+        "responses" : {
+          "200" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }, 
+              "application/xml" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }, 
+              "text/csv" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }
+            },
+            "description" : "Retorna as votações em comissão da proposição informada"
+          }
+        },
+        "parameters" : [
+          {
+            "name" : "ano",
+            "in" : "path",
+            "required" : true,
+            "schema" : {
+              "type" : "integer",
+              "format" : "int32"
+            },
+            "description" : "- Ano (com 4 dígitos) da proposição"
+          },
+          {
+            "name" : "numero",
+            "in" : "path",
+            "required" : true,
+            "schema" : {
+              "type" : "string"
+            },
+            "description" : "- Número da proposição"
+          },
+          {
+            "name" : "sigla",
+            "in" : "path",
+            "required" : true,
+            "schema" : {
+              "type" : "string"
+            },
+            "description" : "- Sigla do tipo de proposição"
+          },
+          {
+            "name" : "comissao",
+            "in" : "query",
+            "schema" : {
+              "type" : "string"
+            },
+            "description" : "(opcional) - Sigla da comissão"
+          },
+          {
+            "name" : "dataFim",
+            "in" : "query",
+            "schema" : {
+              "type" : "string"
+            },
+            "description" : "(opcional) - Data de fim para pesquisa no formato AAAAMMDD"
+          },
+          {
+            "name" : "dataInicio",
+            "in" : "query",
+            "schema" : {
+              "type" : "string"
+            },
+            "description" : "(opcional) - Data de início para pesquisa no formato AAAAMMDD"
+          },
+          {
+            "name" : "v",
+            "in" : "query",
+            "schema" : {
+              "type" : "integer",
+              "format" : "int32"
+            },
+            "description" : ""
+          }
+        ]
+      }
+    },
+    "\/dadosabertos/votacaoComissao/parlamentar/{codigo}" : {
+      "get" : {
+        "tags" : [ "VotacaoComissaoService" ],
+        "description" : "Obtém as votações em comissões por parlamentar",
+        "operationId" : "votacaoComissaoPorParlamentarXml",
+        "responses" : {
+          "200" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }, 
+              "application/xml" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }, 
+              "text/csv" : {
+                "schema" : {
+"description" : "",
+"type" : "string"
+                }
+              }
+            },
+            "description" : "Retorna as votações em comissão do parlamentar informado"
+          }
+        },
+        "parameters" : [
+          {
+            "name" : "codigo",
+            "in" : "path",
+            "required" : true,
+            "schema" : {
+              "type" : "integer",
+              "format" : "int32"
+            },
+            "description" : "- Código do parlamentar"
+          },
+          {
+            "name" : "comissao",
+            "in" : "query",
+            "schema" : {
+              "type" : "string"
+            },
+            "description" : "(opcional) - Sigla da comissão"
+          },
+          {
+            "name" : "dataFim",
+            "in" : "query",
+            "schema" : {
+              "type" : "string"
+            },
+            "description" : "(opcional) - Data de fim para pesquisa no formato AAAAMMDD"
+          },
+          {
+            "name" : "dataInicio",
+            "in" : "query",
+            "schema" : {
+              "type" : "string"
+            },
+            "description" : "(opcional) - Data de início para pesquisa no formato AAAAMMDD"
+          },
+          {
+            "name" : "v",
+            "in" : "query",
+            "schema" : {
+              "type" : "integer",
+              "format" : "int32"
+            },
+            "description" : ""
+          }
+        ]
+      }
+    }
+  }
+}
