@@ -1,29 +1,25 @@
 import sqlite3
 """Adiciona uma resposta da API (XML) ao banco de dados SQLite."""
 
+
 def adicionar_discursos(data):
-    """Adiciona ao banco de dados os discursos de um senador, modificando data/discursos.db.
-    Args: data (dict): dados dos discursos de um senador obtidos por meio da API de dados abertos do Senado.
-    Returns: None
-    
-    """
     # Conectar ao banco de dados
-    conn = sqlite3.connect('../data/discursos.db')
+    conn = sqlite3.connect('data/discursos.db')
     cursor = conn.cursor()
 
     # Obter informações do senador
-    parlamentar = data['DiscursosParlamentar']['Parlamentar']['IdentificacaoParlamentar']
+    parlamentar = data['DiscursosParlamentar']['Parlamentar'].get('IdentificacaoParlamentar', {})
     senador_dados = (
-        int(parlamentar['CodigoParlamentar']),
-        parlamentar['NomeParlamentar'],
-        parlamentar['NomeCompletoParlamentar'],
-        parlamentar['SexoParlamentar'],
-        parlamentar['SiglaPartidoParlamentar'],
-        parlamentar['UfParlamentar'],
-        parlamentar['FormaTratamento'],
-        parlamentar['UrlFotoParlamentar'],
-        parlamentar['UrlPaginaParlamentar'],
-        parlamentar['EmailParlamentar']
+        int(parlamentar.get('CodigoParlamentar', 0)),
+        parlamentar.get('NomeParlamentar', ''),
+        parlamentar.get('NomeCompletoParlamentar', ''),
+        parlamentar.get('SexoParlamentar', ''),
+        parlamentar.get('SiglaPartidoParlamentar', ''),
+        parlamentar.get('UfParlamentar', ''),
+        parlamentar.get('FormaTratamento', ''),
+        parlamentar.get('UrlFotoParlamentar', ''),
+        parlamentar.get('UrlPaginaParlamentar', ''),
+        parlamentar.get('EmailParlamentar', '')
     )
 
     # Inserir o senador na tabela Senadores (evitar duplicatas)
@@ -34,22 +30,23 @@ def adicionar_discursos(data):
     ''', senador_dados)
 
     # Obter o ID do senador para associar aos discursos
-    cursor.execute('SELECT id FROM Senadores WHERE codigo_parlamentar = ?', (int(parlamentar['CodigoParlamentar']),))
+    cursor.execute('SELECT id FROM Senadores WHERE codigo_parlamentar = ?',
+                   (int(parlamentar.get('CodigoParlamentar', 0)),))
     senador_id = cursor.fetchone()[0]
 
     # Processar cada discurso
-    for discurso in data['DiscursosParlamentar']['Parlamentar']['Pronunciamentos']['Pronunciamento']:
+    for discurso in data['DiscursosParlamentar']['Parlamentar'].get('Pronunciamentos', {}).get('Pronunciamento', []):
         # Inserir a sessão, se ainda não existir
-        sessao = discurso['SessaoPlenaria']
+        sessao = discurso.get('SessaoPlenaria', {})
         sessao_dados = (
-            int(sessao['CodigoSessao']),
-            sessao['SiglaCasaSessao'],
-            sessao['NomeCasaSessao'],
-            int(sessao['CodigoSessaoLegislativa']),
-            sessao['SiglaTipoSessao'],
-            int(sessao['NumeroSessao']),
-            sessao['DataSessao'],
-            sessao['HoraInicioSessao']
+            int(sessao.get('CodigoSessao', 0)),
+            sessao.get('SiglaCasaSessao', ''),
+            sessao.get('NomeCasaSessao', ''),
+            int(sessao.get('CodigoSessaoLegislativa', 0)),
+            sessao.get('SiglaTipoSessao', ''),
+            int(sessao.get('NumeroSessao', 0)),
+            sessao.get('DataSessao', ''),
+            sessao.get('HoraInicioSessao', '')
         )
         cursor.execute('''
             INSERT OR IGNORE INTO Sessoes 
@@ -58,23 +55,23 @@ def adicionar_discursos(data):
         ''', sessao_dados)
 
         # Obter o ID da sessão
-        cursor.execute('SELECT id FROM Sessoes WHERE codigo_sessao = ?', (int(sessao['CodigoSessao']),))
+        cursor.execute('SELECT id FROM Sessoes WHERE codigo_sessao = ?', (int(sessao.get('CodigoSessao', 0)),))
         sessao_id = cursor.fetchone()[0]
 
         # Inserir o discurso
         discurso_dados = (
-            int(discurso['CodigoPronunciamento']),
+            int(discurso.get('CodigoPronunciamento', 0)),
             senador_id,
-            discurso['TipoUsoPalavra']['Descricao'],
-            discurso['DataPronunciamento'],
-            discurso['SiglaPartidoParlamentarNaData'],
-            discurso['UfParlamentarNaData'],
-            discurso['SiglaCasaPronunciamento'],
-            discurso['NomeCasaPronunciamento'],
-            discurso['TextoResumo'],
-            discurso['Indexacao'],
-            discurso['UrlTexto'],
-            discurso['UrlTextoBinario'],
+            discurso.get('TipoUsoPalavra', {}).get('Descricao', ''),
+            discurso.get('DataPronunciamento', ''),
+            discurso.get('SiglaPartidoParlamentarNaData', ''),
+            discurso.get('UfParlamentarNaData', ''),
+            discurso.get('SiglaCasaPronunciamento', ''),
+            discurso.get('NomeCasaPronunciamento', ''),
+            discurso.get('TextoResumo', ''),
+            discurso.get('Indexacao', ''),
+            discurso.get('UrlTexto', ''),
+            discurso.get('UrlTextoBinario', ''),
             sessao_id
         )
         cursor.execute('''
@@ -86,19 +83,19 @@ def adicionar_discursos(data):
 
         # Obter o ID do discurso para associar às publicações
         cursor.execute('SELECT id FROM Discursos WHERE codigo_pronunciamento = ?',
-                       (int(discurso['CodigoPronunciamento']),))
+                       (int(discurso.get('CodigoPronunciamento', 0)),))
         discurso_id = cursor.fetchone()[0]
 
         # Inserir a publicação relacionada ao discurso
-        publicacao = discurso['Publicacoes']['Publicacao']
+        publicacao = discurso.get('Publicacoes', {}).get('Publicacao', {})
         publicacao_dados = (
             discurso_id,
-            publicacao['DescricaoVeiculoPublicacao'],
-            publicacao['DataPublicacao'],
-            int(publicacao['NumeroPagInicioPublicacao']),
-            int(publicacao['NumeroPagFimPublicacao']),
-            publicacao['IndicadorRepublicacao'],
-            publicacao['UrlDiario']
+            publicacao.get('DescricaoVeiculoPublicacao', ''),
+            publicacao.get('DataPublicacao', ''),
+            int(publicacao.get('NumeroPagInicioPublicacao', 0)),
+            int(publicacao.get('NumeroPagFimPublicacao', 0)),
+            publicacao.get('IndicadorRepublicacao', ''),
+            publicacao.get('UrlDiario', '')
         )
         cursor.execute('''
             INSERT OR IGNORE INTO Publicacoes 
@@ -109,5 +106,4 @@ def adicionar_discursos(data):
     # Salvar as alterações e fechar a conexão
     conn.commit()
     conn.close()
-
     print("Dados inseridos com sucesso!")
