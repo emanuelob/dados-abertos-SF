@@ -5,12 +5,12 @@ from datetime import datetime
 BASE_URL = "https://legis.senado.leg.br/dadosabertos"
 
 #código do Senador Rodrigo Pacheco
-SENADOR_CODIGO = 5732
+#SENADOR_CODIGO = 5732
 
-DATA_INICIO = "20210202"  #02/02/2021
-DATA_FIM = datetime.now().strftime("%Y%m%d")  #data atual
+#DATA_INICIO = "20210202"  #02/02/2021
+#DATA_FIM = datetime.now().strftime("%Y%m%d")  #data atual
 
-def obter_discursos():
+def obter_discursos(SENADOR_CODIGO, DATA_INICIO, DATA_FIM):
     #endpoint da API
     url = f"{BASE_URL}/senador/{SENADOR_CODIGO}/discursos?casa=SF&dataInicio={DATA_INICIO}&dataFim={DATA_FIM}"
     
